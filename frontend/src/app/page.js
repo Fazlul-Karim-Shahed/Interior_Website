@@ -4,6 +4,7 @@ import Contact from "../components/client/LandingPage/Contact";
 import HeroSection from "../components/client/LandingPage/HeroSection";
 import Portfolio from "../components/client/LandingPage/Portfolio";
 import Services from "../components/client/LandingPage/Services";
+import WorkingProcess from "../components/client/LandingPage/WorkingProcess";
 
 
 export const metadata = {
@@ -25,6 +26,8 @@ export default function Home() {
 
             {/* Portfolio Section */}
             <Portfolio />
+
+            <WorkingProcess />
 
             {/* Contact Section */}
             <Contact />

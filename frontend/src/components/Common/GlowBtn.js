@@ -26,6 +26,7 @@ const GlowBtn = ({
     size = { sm: "sm", md: "md", lg: "lg" },
     color = "primary",
     shadow = true, // true means show default shadow, false means no shadow
+    radius = "0.5rem", // <- ✅ Add this line
     children,
     ...props
 }) => {
@@ -52,6 +53,7 @@ const GlowBtn = ({
                     "--btn-glow": c.glow,
                     "--btn-hover-text": c.hoverText,
                     "--btn-box-shadow": boxShadowHover,
+                    borderRadius: radius,
                 }}
                 {...props}
             >
@@ -75,6 +77,7 @@ const GlowBtn = ({
 
                 button:hover {
                     color: var(--btn-hover-text);
+                    transform: translateY(-1px);
                     box-shadow: var(--btn-box-shadow);
                 }
 

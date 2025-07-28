@@ -1,17 +1,41 @@
-import Image from 'next/image';
-import React from 'react'
+import React from "react";
+import ClientImageWithLoader from "../../Common/ClientImageWithLoader";
+
+const projects = [
+    {
+        src: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80",
+        alt: "Modern Living Room",
+        name: "Modern Living Room",
+    },
+    {
+        src: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=800&q=80",
+        alt: "Luxury Interior with Lighting",
+        name: "Luxury Interior",
+    },
+    {
+        src: "https://images.unsplash.com/photo-1588854337236-dcc8f6e146f4?auto=format&fit=crop&w=800&q=80",
+        alt: "Contemporary Dining Space",
+        name: "Contemporary Dining",
+    },
+];
 
 export default function Portfolio() {
-  return (
-      <section className="py-16 px-6 md:px-20 bg-gray-100 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10">Our Portfolio</h2>
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-              {[1, 2, 3].map((i) => (
-                  <div key={i} className="rounded overflow-hidden shadow">
-                      <Image src={`/portfolio${i}.jpg`} alt={`Project ${i}`} width={600} height={400} className="w-full h-auto" />
-                  </div>
-              ))}
-          </div>
-      </section>
-  );
+    return (
+        <section className="py-24 px-6 md:px-20 bg-gray-50 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 tracking-wide">Our Portfolio</h2>
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+                {projects.map((project, i) => (
+                    <div key={i} className="group cursor-pointer shadow-lg rounded-3xl bg-white overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
+                        <div className="relative w-full h-72 md:h-80 overflow-hidden rounded-3xl">
+                            <ClientImageWithLoader src={project.src} alt={project.alt} fill className="object-cover object-center transition-transform duration-700 group-hover:scale-110" />
+                            <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0  transition-opacity duration-300 pointer-events-none rounded-3xl"></div>
+                        </div>
+                        <div className="py-4 px-5">
+                            <h3 className="text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors duration-300">{project.name}</h3>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
 }
