@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Logo from "@/public/banner.jpg";
+import banner1 from "@/public/banner.jpg";
+import banner2 from "@/public/22.jpg";
+import GlowBtn from "../../Common/GlowBtn";
 
 const slides = [
-    { src: Logo, alt: "Interior 1" },
-    { src: Logo, alt: "Interior 2" },
-    { src: Logo, alt: "Interior 3" },
+    { src: banner1, alt: "Interior 1" },
+    { src: banner2, alt: "Interior 2" },
 ];
-
 
 export default function HeroSection() {
     const [current, setCurrent] = useState(0);
@@ -22,7 +22,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section className="relative h-[90vh] w-full overflow-hidden bg-black text-white">
+        <section className="relative h-[85vh] md:h-[92vh] w-full overflow-hidden bg-black text-white">
             {/* Slider track */}
             <div className="flex h-full transition-transform duration-1000 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
                 {slides.map((slide, index) => (
@@ -41,9 +41,13 @@ export default function HeroSection() {
 
             {/* Overlay content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10 bg-black/40">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">Transform Your Living Space</h1>
-                <p className="text-lg md:text-xl mb-6">Elegant and functional interior design tailored to your vision.</p>
-                <button className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 transition rounded text-white font-medium">Book Free Consultation</button>
+                <h1 className="text-3xl md:text-6xl font-bold mb-3 shine-text py-3">Transform Your Living Space</h1>
+
+                <p className="text-md md:text-xl mb-6">Elegant and functional interior design tailored to your vision.</p>
+                <GlowBtn effect="slide_from_left" color="info" size={{ sm: "md", md: "lg" }}>
+                    Book Free Consultation
+                </GlowBtn>
+                {/* <button className="text-sm md:text-base px-3 md:px-6 py-2 md:py-3 bg-emerald-600 hover:bg-emerald-700 transition rounded text-white font-medium">Book Free Consultation</button> */}
             </div>
 
             {/* Navigation Dots */}
@@ -52,6 +56,27 @@ export default function HeroSection() {
                     <div key={index} onClick={() => setCurrent(index)} className={`h-3 w-3 rounded-full cursor-pointer transition ${current === index ? "bg-white" : "bg-white/50"}`} />
                 ))}
             </div>
+
+            <style jsx>{`
+                .shine-text {
+                    position: relative;
+                    background: linear-gradient(90deg, #4facfe, #00f2fe, #4facfe, #4facfe, #00f2fe, #4facfe);
+                    background-size: 200% 100%;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation: shine-slide 10s linear infinite;
+                }
+
+                @keyframes shine-slide {
+                    0% {
+                        background-position: 200% 0;
+                    }
+                    100% {
+                        background-position: -200% 0;
+                    }
+                }
+            `}</style>
         </section>
     );
 }
