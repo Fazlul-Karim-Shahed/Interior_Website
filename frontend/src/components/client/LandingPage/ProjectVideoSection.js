@@ -26,7 +26,7 @@ export default function ProjectVideoSection() {
         <section className="py-20 px-6 ">
             <h2 className="text-4xl font-extrabold text-brand-900 mb-16 text-center tracking-wide">Project Video Section</h2>
 
-            <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-10">
+            <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {videos.map(({ title, url }, idx) => (
                     <div
                         key={idx}
@@ -41,7 +41,7 @@ export default function ProjectVideoSection() {
                                 className="w-full h-full"
                             />
                         </div>
-                        <div className="px-6 py-4 text-center">
+                        <div className="px-2 py-4 text-center">
                             <h3 className="text-sm md:text-base text-brand-800 font-semibold tracking-wide">{title}</h3>
                         </div>
                     </div>

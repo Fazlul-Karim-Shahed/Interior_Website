@@ -31,7 +31,7 @@ export default function Contact() {
 
                 <div className="flex flex-col md:flex-row gap-12 pt-5">
                     {/* Contact Form */}
-                    <form onSubmit={formik.handleSubmit} className="bg-white rounded-lg p-8 flex-1 shadow-lg text-gray-900" noValidate>
+                    <form onSubmit={formik.handleSubmit} className="bg-white rounded-lg p-6 flex-1 shadow-lg text-gray-900" noValidate>
                         <h3 className="text-2xl font-semibold mb-6 text-brand-700">Booking for free consultancy</h3>
 
                         <label className="block mb-4">

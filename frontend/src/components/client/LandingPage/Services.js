@@ -24,7 +24,7 @@ export default function Services() {
         <section className="py-20 px-6 bg-gradient-to-br from-brand-50 to-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-14 text-brand-dark-navy-900 text-center">Our Services</h2>
 
-            <div className="max-w-7xl mx-auto grid gap-6 grid-cols-2 md:grid-cols-3">
+            <div className="max-w-7xl mx-auto grid gap-4 grid-cols-2 md:grid-cols-3">
                 {services.map((item, idx) => (
                     <div
                         key={idx}
