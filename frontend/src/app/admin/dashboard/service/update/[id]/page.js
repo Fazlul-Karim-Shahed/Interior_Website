@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { getAServiceApi, updateServiceApi } from "@/src/api/ServiceApi";
+import dynamic from "next/dynamic";
 
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 export default function UpdateServicePage() {
     const { id } = useParams();
@@ -63,7 +65,7 @@ export default function UpdateServicePage() {
     };
 
     return (
-        <div className="max-w-2xl mx-auto p-6 mt-10 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+        <div className="p-3 mt-10 bg-white dark:bg-gray-900 rounded-xl">
             <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-4">Update Service</h2>
             {message && <p className="text-center text-red-500 mb-4">{message}</p>}
 
@@ -82,13 +84,22 @@ export default function UpdateServicePage() {
 
                 <div>
                     <label className="block font-medium text-gray-700 dark:text-gray-200 mb-1">Description</label>
-                    <textarea
-                        name="description"
-                        value={formData.description}
-                        onChange={handleInputChange}
-                        rows={4}
-                        className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 dark:bg-gray-800 dark:text-white"
-                    />
+                    <div className="border border-gray-300 rounded-xl overflow-hidden dark:border-gray-600 dark:bg-gray-800">
+                        <JoditEditor
+                            value={formData.description}
+                            onBlur={(newContent) =>
+                                setFormData((prev) => ({
+                                    ...prev,
+                                    description: newContent,
+                                }))
+                            }
+                            config={{
+                                readonly: false,
+                                height: 300,
+                                toolbarSticky: false,
+                            }}
+                        />
+                    </div>
                 </div>
 
                 <div>

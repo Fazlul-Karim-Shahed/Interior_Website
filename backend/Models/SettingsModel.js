@@ -4,8 +4,11 @@ const SettingsModel = model(
     "Settings",
     new Schema(
         {
-            coverPhoto: { type: Object, contentType: String, name: String },
-            
+            sliderImages: [{ type: Object, name: String, url: String, contentType: String }],
+            about: { type: String },
+            services: [{ type: Schema.Types.ObjectId, ref: "Service" }],
+            projects: [{ type: Schema.Types.ObjectId, ref: "Project" }],
+            videos: [{ type: Schema.Types.ObjectId, ref: "Videos" }],
         },
         { timestamps: true }
     )

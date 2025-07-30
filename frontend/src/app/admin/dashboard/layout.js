@@ -27,6 +27,17 @@ const navGroups = [
             { label: "Show All", href: "/admin/dashboard/project" },
         ],
     },
+
+    {
+        label: "Customize",
+        icon: faList,
+        items: [
+            { label: "About", href: "/admin/dashboard/customize/about" },
+            { label: "Slider", href: "/admin/dashboard/customize/slider" },
+            { label: "Service", href: "/admin/dashboard/customize/service" },
+            { label: "Project", href: "/admin/dashboard/customize/project" },
+        ],
+    },
 ];
 
 export default function SuperAdminDashboardlayout({ children }) {
@@ -64,7 +75,12 @@ export default function SuperAdminDashboardlayout({ children }) {
                                 </button>
                                 {groupOpen[group.label] &&
                                     group.items.map((item) => (
-                                        <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="ml-10 block text-sm py-1 text-emerald-800 hover:text-emerald-600">
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            onClick={() => setOpen(false)}
+                                            className="ml-16 block text-sm py-2 hover:underline text-emerald-800 hover:text-emerald-600"
+                                        >
                                             {item.label}
                                         </Link>
                                     ))}
@@ -91,7 +107,7 @@ export default function SuperAdminDashboardlayout({ children }) {
                                 </button>
                                 {groupOpen[group.label] &&
                                     group.items.map((item) => (
-                                        <Link key={item.href} href={item.href} className="ml-8 block text-sm py-1 text-emerald-800 hover:text-emerald-600">
+                                        <Link key={item.href} href={item.href} className="ml-16 block text-sm py-2 hover:underline text-emerald-800 hover:text-emerald-600">
                                             {item.label}
                                         </Link>
                                     ))}

@@ -4,6 +4,11 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { getProjectByIdApi, updateProjectApi } from "@/src/api/ProjectApi";
 import { getAllServiceApi } from "@/src/api/ServiceApi";
+import dynamic from "next/dynamic";
+
+
+// Dynamically import to avoid SSR issues in Next.js
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 export default function UpdateProjectPage() {
     const router = useRouter();
@@ -237,13 +242,22 @@ export default function UpdateProjectPage() {
                 {/* Description */}
                 <div>
                     <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200">Description</label>
-                    <textarea
-                        name="description"
-                        value={formData.description}
-                        onChange={handleInputChange}
-                        rows={4}
-                        className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 dark:bg-gray-800 dark:text-white"
-                    />
+                    <div className="border border-gray-300 rounded-xl overflow-hidden dark:border-gray-600 dark:bg-gray-800">
+                        <JoditEditor
+                            value={formData.description}
+                            onBlur={(newContent) =>
+                                setFormData((prev) => ({
+                                    ...prev,
+                                    description: newContent,
+                                }))
+                            }
+                            config={{
+                                readonly: false,
+                                height: 300,
+                                toolbarSticky: false,
+                            }}
+                        />
+                    </div>
                 </div>
 
                 {/* Location */}

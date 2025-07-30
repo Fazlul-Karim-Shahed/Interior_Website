@@ -39,21 +39,7 @@ export default function ProjectPage() {
 
     return (
         <div className="max-w-7xl mx-auto px-6 py-10">
-            <div className="flex justify-between items-center mb-8">
-                <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-wide"></h1>
-                <Link href="/admin/dashboard/project/create">
-                    <button
-                        className="relative inline-block px-8 py-3 font-semibold text-white rounded-lg shadow-lg
-              bg-gradient-to-r from-purple-500 to-indigo-600
-              hover:from-indigo-600 hover:to-purple-500
-              transition-all duration-300
-              before:absolute before:inset-0 before:rounded-lg before:bg-white before:opacity-10 before:blur-sm
-              active:scale-95"
-                    >
-                        + Create New Project
-                    </button>
-                </Link>
-            </div>
+            <div className="text-center text-xl mb-5">All Projects</div>
 
             {errorMsg && <p className="mb-4 text-center text-red-600 font-semibold">{errorMsg}</p>}
 
