@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import ClientImageWithLoader from "../../Common/ClientImageWithLoader";
 
 const services = [
@@ -22,20 +21,21 @@ const services = [
 
 export default function Services() {
     return (
-        <section className="py-20 px-6 md:px-20 bg-gradient-to-br from-gray-100 to-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-14 text-gray-800 text-center">Our Services</h2>
-            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+        <section className="py-20 px-6 bg-gradient-to-br from-brand-50 to-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-14 text-brand-dark-navy-900 text-center">Our Services</h2>
+
+            <div className=" max-w-7xl mx-auto grid gap-10 sm:grid-cols-2 md:grid-cols-3">
                 {services.map((item, idx) => (
                     <div
                         key={idx}
-                        className="bg-white/80 backdrop-blur-md border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                        className="bg-white/80 backdrop-blur-md border border-brand-dark-navy-100 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                     >
                         <div className="relative w-full h-72">
                             <ClientImageWithLoader src={item.image} alt={item.title} fill className="object-cover object-center rounded-t-3xl transition-transform duration-500 hover:scale-105" />
                         </div>
                         <div className="p-5 text-center">
-                            <h3 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
-                            <p className="text-gray-600 text-sm">{item.desc}</p>
+                            <h3 className="text-xl font-bold text-brand-dark-navy-500 mb-2">{item.title}</h3>
+                            <p className="text-sm text-brand-dark-navy-900">{item.desc}</p>
                         </div>
                     </div>
                 ))}

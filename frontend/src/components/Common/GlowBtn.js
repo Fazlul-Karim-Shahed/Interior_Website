@@ -9,24 +9,75 @@ const sizeMap = {
 };
 
 const colorMap = {
-    primary: { bg: "#4facfe", glow: "#00f2fe", hoverText: "#004f6e" },
-    neutral: { bg: "#6c757d", glow: "#adb5bd", hoverText: "#343a40" },
-    danger: { bg: "#dc3545", glow: "#ff6f71", hoverText: "#720026" },
-    success: { bg: "#28a745", glow: "#71ff6f", hoverText: "#145214" },
-    warning: { bg: "#ffc107", glow: "#ffe066", hoverText: "#665200" },
-    info: { bg: "#17a2b8", glow: "#66d9e8", hoverText: "#0f4c56" },
-    purple: { bg: "#6f42c1", glow: "#b189f3", hoverText: "#3b1f70" },
-    pink: { bg: "#e83e8c", glow: "#f57fb3", hoverText: "#681e46" },
-    cyan: { bg: "#0dcaf0", glow: "#87e9fd", hoverText: "#065664" },
-    orange: { bg: "#fd7e14", glow: "#fda766", hoverText: "#7a4607" },
+    primary: {
+        bg: "#a855f7",
+        glow: "#c084fc",
+        hoverText: "#581c87",
+    },
+    neutral: {
+        bg: "#6c757d",
+        glow: "#adb5bd",
+        hoverText: "#343a40",
+    },
+    danger: {
+        bg: "#dc3545",
+        glow: "#ff6f71",
+        hoverText: "#720026",
+    },
+    success: {
+        bg: "#28a745",
+        glow: "#71ff6f",
+        hoverText: "#145214",
+    },
+    warning: {
+        bg: "#ffc107",
+        glow: "#ffe066",
+        hoverText: "#665200",
+    },
+    info: {
+        bg: "#17a2b8",
+        glow: "#66d9e8",
+        hoverText: "#0f4c56",
+    },
+    purple: {
+        bg: "#6f42c1",
+        glow: "#a093ff",
+        hoverText: "#27133a",
+    },
+    pink: {
+        bg: "#d6336c",
+        glow: "#ff7eb6",
+        hoverText: "#3b0b2a",
+    },
+    cyan: {
+        bg: "#0dcaf0",
+        glow: "#87e9fd",
+        hoverText: "#065664",
+    },
+    orange: {
+        bg: "#fd7e14",
+        glow: "#fda766",
+        hoverText: "#7a4607",
+    },
+    indigo: {
+        bg: "#4c51bf",
+        glow: "#7896ff",
+        hoverText: "#1b1c3f",
+    },
+    "dark-navy": {
+        bg: "#1a202c",
+        glow: "#6f7c9d",
+        hoverText: "#05070a",
+    },
 };
 
 const GlowBtn = ({
     effect = "slide_from_left",
     size = { sm: "sm", md: "md", lg: "lg" },
     color = "primary",
-    shadow = true, // true means show default shadow, false means no shadow
-    radius = "0.5rem", // <- ✅ Add this line
+    shadow = true,
+    radius = "0.5rem",
+    animation = false, // <-- NEW PARAM
     children,
     ...props
 }) => {
@@ -40,14 +91,12 @@ const GlowBtn = ({
               };
 
     const c = colorMap[color] || colorMap.primary;
-
-    // Decide box-shadow string based on shadow boolean
     const boxShadowHover = shadow ? `0 8px 20px var(--btn-glow)` : "none";
 
     return (
         <>
             <button
-                className={`${effect} btn-responsive`}
+                className={`${effect} btn-responsive ${animation ? "glossy-animated" : ""}`}
                 style={{
                     "--btn-bg": c.bg,
                     "--btn-glow": c.glow,
@@ -60,7 +109,7 @@ const GlowBtn = ({
                 {children}
             </button>
 
-            <style jsx global>{`
+            <style jsx >{`
                 button {
                     font-weight: 600;
                     font-family: "Segoe UI", sans-serif;
@@ -89,7 +138,6 @@ const GlowBtn = ({
                     transition: all 0.35s ease;
                 }
 
-                /* Slide Effects */
                 .slide_from_left::after {
                     top: 0;
                     bottom: 0;
@@ -99,8 +147,6 @@ const GlowBtn = ({
                 .slide_from_left:hover::after {
                     left: 0;
                     right: 0;
-                    top: 0;
-                    bottom: 0;
                 }
 
                 .slide_from_right::after {
@@ -112,8 +158,6 @@ const GlowBtn = ({
                 .slide_from_right:hover::after {
                     left: 0;
                     right: 0;
-                    top: 0;
-                    bottom: 0;
                 }
 
                 .slide_from_top::after {
@@ -123,8 +167,6 @@ const GlowBtn = ({
                     bottom: 100%;
                 }
                 .slide_from_top:hover::after {
-                    left: 0;
-                    right: 0;
                     top: 0;
                     bottom: 0;
                 }
@@ -136,13 +178,10 @@ const GlowBtn = ({
                     bottom: -100%;
                 }
                 .slide_from_bottom:hover::after {
-                    left: 0;
-                    right: 0;
                     top: 0;
                     bottom: 0;
                 }
 
-                /* Grow Effects */
                 button.grow_box::after {
                     left: 0;
                     right: 0;
@@ -160,7 +199,6 @@ const GlowBtn = ({
                     right: -50%;
                     top: -150%;
                     bottom: -150%;
-                    line-height: 8.34em;
                     transform: scale(0, 0);
                 }
                 button.grow_ellipse:hover::after {
@@ -214,6 +252,41 @@ const GlowBtn = ({
                 @media (min-width: 1024px) {
                     .btn-responsive {
                         ${sizeMap[responsiveSize.lg]}
+                    }
+                }
+
+                /* Glossy Animation */
+                .glossy-animated {
+                    position: relative;
+                    overflow: hidden;
+                    isolation: isolate;
+                }
+
+                .glossy-animated::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: -75%;
+                    height: 100%;
+                    width: 50%;
+                    background: linear-gradient(120deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.1) 100%);
+                    transform: skewX(-20deg);
+                    animation: glossy-slide 4s infinite;
+                    z-index: 0;
+                    pointer-events: none;
+                }
+
+                .glossy-animated > * {
+                    position: relative;
+                    z-index: 1;
+                }
+
+                @keyframes glossy-slide {
+                    0% {
+                        left: -75%;
+                    }
+                    100% {
+                        left: 125%;
                     }
                 }
             `}</style>

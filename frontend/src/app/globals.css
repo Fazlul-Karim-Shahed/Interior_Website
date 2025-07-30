@@ -14,18 +14,68 @@
 }
 
 @theme {
-    --color-brand-50:  #e6f0f6;
-    --color-brand-100: #c0d7e7;
-    --color-brand-200: #99bfda;
-    --color-brand-300: #73a6cc;
-    --color-brand-400: #4d8ec0;
-    --color-brand-500: #2f78ae; /* main brand color */
-    --color-brand-600: #276493;
-    --color-brand-700: #1f5272;
-    --color-brand-800: #173b52;
-    --color-brand-900: #0f2433;
-}
+    --color-brand-50: #faf5ff;
+    --color-brand-100: #f3e8ff;
+    --color-brand-200: #e9d5ff;
+    --color-brand-300: #d8b4fe;
+    --color-brand-400: #c084fc;
+    --color-brand-500: #a855f7; /* 🎯 Main Brand Color */
+    --color-brand-600: #9333ea;
+    --color-brand-700: #7e22ce;
+    --color-brand-800: #6b21a8;
+    --color-brand-900: #581c87;
 
+    /* 🌸 Pink / Fuchsia */
+
+    --color-brand-pink-50: #fff0f6;
+    --color-brand-pink-100: #ffd6e8;
+    --color-brand-pink-200: #ffafd3;
+    --color-brand-pink-300: #ff7eb6;
+    --color-brand-pink-400: #f06595;
+    --color-brand-pink-500: #d6336c; /* main */
+    --color-brand-pink-600: #b02a5a;
+    --color-brand-pink-700: #84204d;
+    --color-brand-pink-800: #58123f;
+    --color-brand-pink-900: #3b0b2a;
+
+    /* Violet / Purple */
+
+    --color-brand-violet-50: #f3f0ff;
+    --color-brand-violet-100: #dadaff;
+    --color-brand-violet-200: #bfb8ff;
+    --color-brand-violet-300: #a093ff;
+    --color-brand-violet-400: #876eff;
+    --color-brand-violet-500: #6f42c1; /* main */
+    --color-brand-violet-600: #5a32a3;
+    --color-brand-violet-700: #47287a;
+    --color-brand-violet-800: #341d52;
+    --color-brand-violet-900: #27133a;
+
+    /* Indigo / Bluish Purple */
+    --color-brand-indigo-50: #ebf0ff;
+    --color-brand-indigo-100: #c7d2ff;
+    --color-brand-indigo-200: #9db2ff;
+    --color-brand-indigo-300: #7896ff;
+    --color-brand-indigo-400: #577eff;
+    --color-brand-indigo-500: #4c51bf; /* main */
+    --color-brand-indigo-600: #3f4299;
+    --color-brand-indigo-700: #323374;
+    --color-brand-indigo-800: #262758;
+    --color-brand-indigo-900: #1b1c3f;
+
+    /* Deep Navy / Dark Shadow */
+
+    --color-brand-dark-navy-50: #f0f2f7;
+    --color-brand-dark-navy-100: #d9dee9;
+    --color-brand-dark-navy-200: #bac1d6;
+    --color-brand-dark-navy-300: #95a1bc;
+    --color-brand-dark-navy-400: #6f7c9d;
+    --color-brand-dark-navy-500: #1a202c; /* main */
+    --color-brand-dark-navy-600: #141922;
+    --color-brand-dark-navy-700: #0f131b;
+    --color-brand-dark-navy-800: #0a0d14;
+    --color-brand-dark-navy-900: #05070a;
+}
 
 body {
     background: var(--background);

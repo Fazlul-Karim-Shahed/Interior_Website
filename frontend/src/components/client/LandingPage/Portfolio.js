@@ -13,7 +13,7 @@ const projects = [
         name: "Luxury Interior",
     },
     {
-        src: "https://images.unsplash.com/photo-1588854337236-dcc8f6e146f4?auto=format&fit=crop&w=800&q=80",
+        src: "https://plus.unsplash.com/premium_photo-1676968002945-c8f74e0e27d8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI3fHx8ZW58MHx8fHx8",
         alt: "Contemporary Dining Space",
         name: "Contemporary Dining",
     },
@@ -21,9 +21,9 @@ const projects = [
 
 export default function Portfolio() {
     return (
-        <section className="py-24 px-6 md:px-20 bg-gray-50 text-center">
+        <section className="py-24 px-6 bg-gradient-to-br from-brand-50 to-white text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 tracking-wide">Our Portfolio</h2>
-            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+            <div className="max-w-7xl mx-auto grid gap-10 sm:grid-cols-2 md:grid-cols-3">
                 {projects.map((project, i) => (
                     <div key={i} className="group cursor-pointer shadow-lg rounded-3xl bg-white overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
                         <div className="relative w-full h-72 md:h-80 overflow-hidden rounded-3xl">

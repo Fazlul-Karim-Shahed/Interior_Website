@@ -1,7 +1,7 @@
 "use client";
 
 import { signinApi } from "@/src/api/AuthApi";
-import Logo from "@/public/Logo.svg";
+import Logo from "@/public/Logo_Trans.png";
 import { saveToken } from "@/src/functions/AuthFunctions";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,12 +45,12 @@ export default function Signin() {
 
     return (
         <div className="font-[sans-serif]">
-            <div className="grid lg:grid-cols-2 gap-4 max-lg:gap-12 bg-gradient-to-r from-brand-500 to-brand-700 px-3 md:px-8 py-12 h-[320px] ">
+            <div className="grid lg:grid-cols-2 gap-4 max-lg:gap-12 bg-gradient-to-r from-brand-600 to-brand-900 px-3 md:px-8 py-12 h-[320px] ">
                 <div>
                     <Link href="/">
-                        <Image width="120" height="100" src={Logo} alt="logo" className="md:w-40 w-28" />
+                        <Image width="120" height="10" src={Logo} alt="logo" className="md:w-20 w-28" />
                     </Link>
-                    <div className="max-w-2xl mt-16 max-lg:hidden">
+                    <div className="max-w-2xl mt-8 max-lg:hidden">
                         <h3 className="text-3xl font-bold text-white">Sign In</h3>
                         <p className="text-sm mt-4 text-white">
                             We&apos;re glad to see you again! Log in to stay connected with the latest updates, special offers, and to make your shopping journey even smoother.
@@ -126,7 +126,10 @@ export default function Signin() {
                         </div> */}
 
                         <div className="mt-8">
-                            <button type="submit" className="w-full py-3 px-6 text-sm font-semibold rounded-md text-white bg-brand-500 hover:bg-600 transition-all duration-200 hover:shadow-xl focus:outline-none">
+                            <button
+                                type="submit"
+                                className="w-full py-3 px-6 text-sm font-semibold rounded-md text-white bg-brand-500 hover:bg-600 transition-all duration-200 hover:shadow-xl focus:outline-none"
+                            >
                                 {loading ? <div className="loading loading-spinner loading-md"></div> : "Log in"}
                             </button>
                         </div>

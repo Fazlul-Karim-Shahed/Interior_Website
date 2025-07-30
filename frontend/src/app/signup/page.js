@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/public/Logo.svg";
+import Logo from "@/public/Logo_Trans.png";
 import { signupApi } from "@/src/api/AuthApi";
 import { saveToken } from "@/src/functions/AuthFunctions";
 import Image from "next/image";
@@ -76,13 +76,13 @@ export default function AdminRegistration() {
 
     return (
         <div className="">
-            <div className="grid lg:grid-cols-2 gap-4 max-lg:gap-12 bg-gradient-to-r from-brand-800 to-brand-900 px-3 md:px-8 py-12 h-[320px]">
+            <div className="grid lg:grid-cols-2 gap-4 max-lg:gap-12 bg-gradient-to-r from-brand-600 to-brand-900 px-3 md:px-8 py-12 h-[320px]">
                 <div>
                     <Link href="/">
-                        <Image width="100" height="100" src={Logo} alt="logo" className="md:w-40 w-28" />
+                        <Image width="100" height="100" src={Logo} alt="logo" className="md:w-20 w-28" />
                     </Link>
-                    <div className="max-w-2xl mt-16 max-lg:hidden">
-                        <h3 className="text-3xl font-bold text-red-500">Create an account</h3>
+                    <div className="max-w-2xl mt-8 max-lg:hidden">
+                        <h3 className="text-3xl font-bold text-red-200">Create an account</h3>
                         <p className="text-sm mt-4 text-white">
                             Join us and discover a world of shopping delights. Create an account to enjoy personalized shopping, exclusive deals, and hassle-free order management.
                         </p>

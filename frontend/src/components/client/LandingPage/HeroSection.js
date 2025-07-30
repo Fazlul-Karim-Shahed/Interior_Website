@@ -22,7 +22,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section className="relative h-[85vh] md:h-[92vh] w-full overflow-hidden bg-black text-white">
+        <section className="relative h-[78vh] md:h-[87vh] w-full overflow-hidden bg-black text-white">
             {/* Slider track */}
             <div className="flex h-full transition-transform duration-1000 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
                 {slides.map((slide, index) => (
@@ -44,28 +44,27 @@ export default function HeroSection() {
                 <h1 className="text-3xl md:text-6xl font-bold mb-3 shine-text py-3">Transform Your Living Space</h1>
 
                 <p className="text-md md:text-xl mb-6">Elegant and functional interior design tailored to your vision.</p>
-                <GlowBtn effect="slide_from_left" color="info" size={{ sm: "md", md: "lg" }}>
+                <GlowBtn effect="slide_from_left" animation color="primary" size={{ sm: "md", md: "lg" }}>
                     Book Free Consultation
                 </GlowBtn>
-                {/* <button className="text-sm md:text-base px-3 md:px-6 py-2 md:py-3 bg-emerald-600 hover:bg-emerald-700 transition rounded text-white font-medium">Book Free Consultation</button> */}
             </div>
 
             {/* Navigation Dots */}
             <div className="absolute bottom-6 w-full flex justify-center gap-2 z-20">
                 {slides.map((_, index) => (
-                    <div key={index} onClick={() => setCurrent(index)} className={`h-3 w-3 rounded-full cursor-pointer transition ${current === index ? "bg-white" : "bg-white/50"}`} />
+                    <div key={index} onClick={() => setCurrent(index)} className={`h-3 w-3 rounded-full cursor-pointer transition ${current === index ? "bg-cyan-500" : "bg-cyan-500/50"}`} />
                 ))}
             </div>
 
             <style jsx>{`
                 .shine-text {
                     position: relative;
-                    background: linear-gradient(90deg, #4facfe, #00f2fe, #4facfe, #4facfe, #00f2fe, #4facfe);
+                    background: linear-gradient(90deg, var(--color-cyan-200), var(--color-cyan-400), var(--color-cyan-400), var(--color-cyan-400), var(--color-cyan-200));
                     background-size: 200% 100%;
                     background-clip: text;
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
-                    animation: shine-slide 10s linear infinite;
+                    animation: shine-slide 5s linear infinite;
                 }
 
                 @keyframes shine-slide {

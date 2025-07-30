@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import Logo from "@/public/Logo.svg";
+import Link from "next/link";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,36 +39,38 @@ export default function Navbar() {
 
     return (
         <nav className="w-full z-50 backdrop-blur-md bg-white/30 dark:bg-black/30 shadow transition-colors duration-500">
-            <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
-                <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 tracking-wide drop-shadow-sm">Misoran Interior BD</div>
+                <div>
+                    <Image src={Logo} alt="Logo" width={80} height={100} />
+                </div>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex space-x-8 text-lg font-medium">
                     {["Home", "Portfolio", "Services", "Contact"].map((item) => (
-                        <a key={item} href={`#${item.toLowerCase()}`} className="relative text-gray-800 dark:text-white transition duration-300 group">
+                        <Link key={item} href={`#${item.toLowerCase()}`} className="relative text-gray-800 dark:text-white transition duration-300 group">
                             {item}
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-500 transition-all group-hover:w-full"></span>
-                        </a>
+                        </Link>
                     ))}
 
                     {store.authenticated && store.decodedToken.role === "admin" && (
-                        <a href={`/admin`} className="relative text-gray-800 dark:text-white transition duration-300 group">
+                        <Link href={`/admin`} className="relative text-gray-800 dark:text-white transition duration-300 group">
                             Admin Panel
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-500 transition-all group-hover:w-full"></span>
-                        </a>
+                        </Link>
                     )}
 
                     {store.authenticated && store.decodedToken.role === "admin" ? (
-                        <a href={`/logout`} className="relative text-gray-800 dark:text-white transition duration-300 group">
+                        <Link href={`/logout`} className="relative text-gray-800 dark:text-white transition duration-300 group">
                             Logout
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-500 transition-all group-hover:w-full"></span>
-                        </a>
+                        </Link>
                     ) : (
-                        <a href={`/signin`} className="relative text-gray-800 dark:text-white transition duration-300 group">
+                        <Link href={`/signin`} className="relative text-gray-800 dark:text-white transition duration-300 group">
                             Signin
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-500 transition-all group-hover:w-full"></span>
-                        </a>
+                        </Link>
                     )}
                 </div>
 
@@ -83,25 +88,25 @@ export default function Navbar() {
             <div ref={menuRef} className="md:hidden overflow-hidden transition-all duration-500 ease-in-out backdrop-blur-lg bg-white/30 dark:bg-black/30" style={{ maxHeight: "0px", opacity: 0 }}>
                 <div className="flex flex-col items-center space-y-4 py-4 text-lg font-medium">
                     {["Home", "Portfolio", "Services", "Contact"].map((item) => (
-                        <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
+                        <Link key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
                             {item}
-                        </a>
+                        </Link>
                     ))}
 
                     {store.authenticated && store.decodedToken.role === "admin" && (
-                        <a href={`/admin`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
+                        <Link href={`/admin`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
                             Admin Panel
-                        </a>
+                        </Link>
                     )}
 
                     {store.authenticated && store.decodedToken.role === "admin" ? (
-                        <a href={`/logout`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
+                        <Link href={`/logout`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
                             Logout
-                        </a>
+                        </Link>
                     ) : (
-                        <a href={`/signin`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
+                        <Link href={`/signin`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
                             Signin
-                        </a>
+                        </Link>
                     )}
                 </div>
             </div>
