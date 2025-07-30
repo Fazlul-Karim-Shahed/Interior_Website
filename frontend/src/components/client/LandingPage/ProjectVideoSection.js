@@ -32,7 +32,7 @@ export default function ProjectVideoSection() {
                         key={idx}
                         className="bg-white/20 backdrop-blur-md border border-brand-300 rounded-2xl shadow-sm hover:shadow-lg hover:scale-[1.03] transition-transform duration-300 overflow-hidden"
                     >
-                        <div className=" rounded-t-2xl overflow-hidden md:h-52 lg:h-80">
+                        <div className=" rounded-t-2xl aspect-[4/3]">
                             <iframe
                                 src={url}
                                 title={title}
@@ -42,7 +42,7 @@ export default function ProjectVideoSection() {
                             />
                         </div>
                         <div className="px-6 py-4 text-center">
-                            <h3 className="text-brand-800 font-semibold uppercase tracking-wide text-sm">{title}</h3>
+                            <h3 className="text-sm md:text-base text-brand-800 font-semibold tracking-wide">{title}</h3>
                         </div>
                     </div>
                 ))}
