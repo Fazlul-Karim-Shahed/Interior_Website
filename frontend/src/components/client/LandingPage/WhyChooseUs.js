@@ -33,11 +33,11 @@ const features = [
 
 export default function WhyChooseUs() {
     return (
-        <section className="py-20 px-6">
+        <section className="pt-10 pb-5 px-6">
             <div className="max-w-7xl mx-auto text-center">
                 <h2 className="text-4xl font-bold text-brand-600 mb-16">Why Choose Us</h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-7 lg:gap-10">
                     {features.map((feature, index) => (
                         <div
                             key={index}
@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
                                 </div>
                             </div>
                             <h3 className="sm:text-xl font-semibold mb-2">{feature.title}</h3>
-                            <p className="text-xs sm:text-sm text-white/90">{feature.desc}</p>
+                            <p className="text-xs sm:text-sm text-white/90 hidden md:block">{feature.desc}</p>
                         </div>
                     ))}
                 </div>

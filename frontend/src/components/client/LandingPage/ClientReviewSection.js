@@ -124,7 +124,7 @@ export default function ClientReviewSection() {
     };
 
     return (
-        <section className="py-20 px-6 md:px-20  relative overflow-hidden select-none">
+        <section className="pt-10 pb-5 px-6 md:px-20  relative overflow-hidden select-none">
             <h2 className="text-4xl font-extrabold text-brand-900 mb-16 text-center tracking-wide">What Our Clients Say</h2>
 
             <div className="relative max-w-7xl mx-auto">

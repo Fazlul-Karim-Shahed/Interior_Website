@@ -21,9 +21,9 @@ const projects = [
 
 export default function Portfolio() {
     return (
-        <section className="py-24 px-6 bg-gradient-to-br from-brand-50 to-white text-center">
+        <section className="pt-10 pb-5 px-6 bg-gradient-to-br from-brand-50 to-white text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 tracking-wide">Our Portfolio</h2>
-            <div className="max-w-7xl mx-auto grid gap-4 grid-cols-2 md:grid-cols-3">
+            <div className="max-w-7xl mx-auto grid  gap-4 md:gap-7 lg:gap-10 grid-cols-2 md:grid-cols-3">
                 {projects.map((project, i) => (
                     <div key={i} className="group cursor-pointer shadow-lg rounded-3xl bg-white overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
                         <div className="relative w-full aspect-[4/3] rounded-3xl">

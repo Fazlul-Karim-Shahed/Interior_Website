@@ -133,7 +133,7 @@ export default function Client() {
   }, []);
 
   return (
-      <section className="py-16 px-4 bg-gradient-to-br from-brand-50 to-white">
+      <section className="pt-10 pb-5 px-4 bg-gradient-to-br from-brand-50 to-white">
           <h2 className="text-3xl font-bold text-brand-900 mb-12 text-center">Our Trusted Clients</h2>
           <div
               ref={containerRef}

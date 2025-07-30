@@ -24,12 +24,12 @@ export default function Contact() {
     });
 
     return (
-        <section className="py-16 px-6 md:px-20 bg-brand-600 text-white">
+        <section className="pt-10 pb-5 px-6 md:px-20 bg-brand-600 text-white">
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-center">Start Your Interior Journey Today</h2>
                 <p className="mb-10 max-w-2xl mx-auto text-center text-brand-100 ">Contact us to get a free consultation and see how we can help bring your vision to life.</p>
 
-                <div className="flex flex-col md:flex-row gap-12 pt-5">
+                <div className="flex flex-col lg:flex-row gap-12 pt-5">
                     {/* Contact Form */}
                     <form onSubmit={formik.handleSubmit} className="bg-white rounded-lg p-6 flex-1 shadow-lg text-gray-900" noValidate>
                         <h3 className="text-2xl font-semibold mb-6 text-brand-700">Booking for free consultancy</h3>

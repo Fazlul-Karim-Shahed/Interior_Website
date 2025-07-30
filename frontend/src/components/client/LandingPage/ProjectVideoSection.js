@@ -23,10 +23,10 @@ const videos = [
 
 export default function ProjectVideoSection() {
     return (
-        <section className="py-20 px-6 ">
+        <section className="pt-10 pb-5 px-6 ">
             <h2 className="text-4xl font-extrabold text-brand-900 mb-16 text-center tracking-wide">Project Video Section</h2>
 
-            <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3  gap-4 md:gap-7 lg:gap-10">
                 {videos.map(({ title, url }, idx) => (
                     <div
                         key={idx}

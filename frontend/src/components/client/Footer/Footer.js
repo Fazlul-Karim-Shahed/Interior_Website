@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
     return (
         <footer className="bg-gray-900 text-gray-300 py-8 px-6">
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
                 {/* Left: copyright */}
                 <p className="text-sm select-none">© {new Date().getFullYear()} Misoran Interior BD. All rights reserved.</p>
 
