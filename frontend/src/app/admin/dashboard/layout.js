@@ -119,7 +119,7 @@ export default function SuperAdminDashboardlayout({ children }) {
             <div className="grid grid-cols-12">
                 {/* Sidebar */}
                 <div className="hidden md:block col-span-2 p-5">
-                    <div className="sticky top-5 bg-white/80 backdrop-blur-2xl rounded-3xl shadow-xl border border-emerald-100 p-4">
+                    <div className="sticky top-5 bg-[#fefbfb] backdrop-blur-2xl rounded-3xl shadow-xl border border-emerald-100 p-4">
                         <h2 className="text-xl font-bold text-center text-emerald-700 mb-6">Admin Panel</h2>
                         {navGroups.map((group) => (
                             <div key={group.label} className="mb-3">
@@ -142,8 +142,8 @@ export default function SuperAdminDashboardlayout({ children }) {
                 </div>
 
                 {/* Main Content */}
-                <div className="col-span-12 md:col-span-10 mt-5 px-2 md:px-0 pb-5">
-                    <div className="bg-white/90 rounded-2xl shadow-lg border border-emerald-100 p-3 md:p-6 backdrop-blur min-h-full">{children}</div>
+                <div className="col-span-12 md:col-span-10 mt-5 px-2 pb-5">
+                    <div className="bg-[#fefbfb] rounded-2xl shadow-lg border border-emerald-100 p-3 md:p-6 backdrop-blur min-h-full">{children}</div>
                 </div>
             </div>
         </div>
