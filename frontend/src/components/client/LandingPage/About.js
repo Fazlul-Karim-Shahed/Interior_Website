@@ -1,5 +1,6 @@
 import React from "react";
 import GlowBtn from "../../Common/GlowBtn";
+import Link from "next/link";
 
 export default function About({ about }) {
     return (
@@ -11,10 +12,10 @@ export default function About({ about }) {
 
             <div className="mt-10 flex justify-center">
                 <GlowBtn effect="grow_skew_forward" color="success" shadow={false} radius="100rem" size={{ sm: "sm", md: "md", lg: "md" }}>
-                    Our Portfolio
+                    <Link href={'/project'}>Our Portfolio</Link>
                 </GlowBtn>
                 <GlowBtn effect="grow_skew_backward" color="primary" shadow={false} radius="100rem" size={{ sm: "sm", md: "md", lg: "md" }}>
-                    Contact Us
+                    <Link href={"/contact"}>Contact Us</Link>
                 </GlowBtn>
             </div>
         </section>
