@@ -28,7 +28,7 @@ const AllVideos = () => {
     const handleEdit = (video) => {
         setEditingId(video._id);
         setEditTitle(video.title);
-        setEditIframe(video.url?.url || "");
+        setEditIframe(video.url?.url?.url || "");
     };
 
     const handleCancel = () => {
@@ -98,7 +98,7 @@ const AllVideos = () => {
                         ) : (
                             <>
                                 <h4 className="text-lg font-semibold mb-2">{video.title}</h4>
-                                <div dangerouslySetInnerHTML={{ __html: video.url?.url || "" }} className="mb-3" />
+                                <div dangerouslySetInnerHTML={{ __html: video.url?.url?.url || "" }} className="mb-3" />
                                 <div className="flex gap-4">
                                     <button onClick={() => handleEdit(video)} className="text-blue-600 hover:underline">
                                         Edit
