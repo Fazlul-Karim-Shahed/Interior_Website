@@ -10,6 +10,7 @@ const AuthRouters = require("./Routers/AuthRouters");
 const ServiceRouters = require("./Routers/ServiceRouters");
 const ProjectRouters = require("./Routers/ProjectRouters");
 const SettingsRouters = require("./Routers/SettingsRouters");
+const VideosRouters = require("./Routers/videoRouters");
 const cron = require("node-cron");
 const axios = require("axios");
 
@@ -52,6 +53,7 @@ app.use("/api/auth", AuthRouters);
 app.use("/api/service", ServiceRouters);
 app.use("/api/project", ProjectRouters);
 app.use("/api/settings", SettingsRouters);
+app.use("/api/videos", VideosRouters);
 
 app.get("/", (req, res) => res.sendFile(path.resolve("./Server.html")));
 

@@ -38,7 +38,7 @@ export default function Navbar() {
     if (pathname === "/signin" || pathname === "/signup" || pathname.startsWith("/admin")) return null;
 
     return (
-        <nav className="w-full z-50 backdrop-blur-md bg-white/30 dark:bg-black/30 shadow transition-colors duration-500">
+        <nav className="w-full z-50 backdrop-blur-md bg-[#fefbfb] dark:bg-black/30 shadow transition-colors duration-500">
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
                 <div>

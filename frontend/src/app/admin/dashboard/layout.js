@@ -38,6 +38,14 @@ const navGroups = [
             { label: "Project", href: "/admin/dashboard/customize/project" },
         ],
     },
+    {
+        label: "Videos",
+        icon: faPlus,
+        items: [
+            { label: "Create", href: "/admin/dashboard/video/create" },
+            { label: "Show All", href: "/admin/dashboard/video" },
+        ],
+    },
 ];
 
 export default function SuperAdminDashboardlayout({ children }) {
