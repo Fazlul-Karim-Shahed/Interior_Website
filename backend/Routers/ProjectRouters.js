@@ -18,8 +18,9 @@ router.put("/:id", roleCheck(["admin"]), updateProject);
 router.delete("/:id", roleCheck(["admin"]), deleteProject);
 
 // Get single project by ID (public or admin)
-// router.get("/:id", getProjectById);
-router.get("/:name", getProjectByName);
+router.get("/:id", getProjectById);
+
+router.get("/name/:name", getProjectByName);
 
 // Get all projects (public or admin)
 router.get("/", getAllProjects);

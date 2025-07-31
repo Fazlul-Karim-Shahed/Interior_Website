@@ -49,8 +49,9 @@ export default function ProjectDetailsPage() {
             {project.featureImage?.url && <img src={project.featureImage.url} alt={project.name} className="w-full max-h-96 object-cover rounded-2xl mb-8 shadow-lg" />}
 
             <section className="mb-8">
-                <h2 className="text-2xl font-semibold mb-2 text-gray-800">Description</h2>
-                <p className="text-gray-700 whitespace-pre-line leading-relaxed">{project.description || "No description available."}</p>
+                <p className="text-gray-700 whitespace-pre-line leading-relaxed">
+                    <div dangerouslySetInnerHTML={{ __html: project.description }} />
+                </p>
             </section>
 
             <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-700">
@@ -75,7 +76,7 @@ export default function ProjectDetailsPage() {
                 {project.service && (
                     <div>
                         <h3 className="font-semibold text-gray-800">Service ID</h3>
-                        <p>{project.service}</p>
+                        <p>{project.service.name}</p>
                     </div>
                 )}
             </section>

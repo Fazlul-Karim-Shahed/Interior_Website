@@ -20,6 +20,15 @@ export const getProjectByIdApi = (id) => {
         }));
 };
 
+export const getProjectByNameApi = (name) => {
+    return fetch(`${BASE_URL}/name/${name}`, { cache: "no-cache" })
+        .then((res) => res.json())
+        .catch((err) => ({
+            message: `Something went wrong. - (${err.message}). Try again`,
+            error: true,
+        }));
+};
+
 export const createProjectApi = (obj) => {
     return axios
         .post(BASE_URL, obj, {
