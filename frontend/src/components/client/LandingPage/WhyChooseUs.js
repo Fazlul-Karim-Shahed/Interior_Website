@@ -33,7 +33,7 @@ const features = [
 
 export default function WhyChooseUs() {
     return (
-        <section className="pt-10 pb-5 px-6">
+        <section className="pt-10 pb-16 px-6">
             <div className="max-w-7xl mx-auto text-center">
                 <h2 className="text-4xl font-bold text-brand-600 mb-16">Why Choose Us</h2>
 

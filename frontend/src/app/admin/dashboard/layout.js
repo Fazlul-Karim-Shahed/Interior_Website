@@ -29,6 +29,24 @@ const navGroups = [
     },
 
     {
+        label: "Client",
+        icon: faBoxOpen,
+        items: [
+            { label: "Create", href: "/admin/dashboard/client/create" },
+            { label: "Show All", href: "/admin/dashboard/client" },
+        ],
+    },
+
+    {
+        label: "Review",
+        icon: faBoxOpen,
+        items: [
+            { label: "Create", href: "/admin/dashboard/review/create" },
+            { label: "Show All", href: "/admin/dashboard/review" },
+        ],
+    },
+
+    {
         label: "Customize",
         icon: faList,
         items: [
@@ -36,6 +54,7 @@ const navGroups = [
             { label: "Slider", href: "/admin/dashboard/customize/slider" },
             { label: "Service", href: "/admin/dashboard/customize/service" },
             { label: "Project", href: "/admin/dashboard/customize/project" },
+            { label: "Video", href: "/admin/dashboard/customize/video" },
         ],
     },
     {

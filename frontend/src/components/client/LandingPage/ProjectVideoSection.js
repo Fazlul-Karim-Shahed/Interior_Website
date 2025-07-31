@@ -2,26 +2,7 @@
 
 import React from "react";
 
-const videos = [
-    {
-        title: "Modern Home Interior Design",
-        url: "https://www.youtube.com/embed/ScMzIvxBSi4",
-    },
-    {
-        title: "Office Workspace Transformation",
-        url: "https://www.youtube.com/embed/tgbNymZ7vqY",
-    },
-    {
-        title: "Custom Furniture Making Process",
-        url: "https://www.youtube.com/embed/5qap5aO4i9A",
-    },
-    {
-        title: "Creative 3D Layout & Planning",
-        url: "https://www.youtube.com/embed/VGrSan3SOI4",
-    },
-];
-
-export default function ProjectVideoSection() {
+export default function ProjectVideoSection({ videos }) {
     return (
         <section className="pt-10 pb-5 px-6 ">
             <h2 className="text-4xl font-extrabold text-brand-900 mb-16 text-center tracking-wide">Project Video Section</h2>

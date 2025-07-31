@@ -1,3 +1,4 @@
+import { getSettingsApi } from "../api/settingsApi";
 import Footer from "../components/client/Footer/Footer";
 import About from "../components/client/LandingPage/About";
 import Client from "../components/client/LandingPage/Client";
@@ -10,27 +11,29 @@ import Services from "../components/client/LandingPage/Services";
 import WhyChooseUs from "../components/client/LandingPage/WhyChooseUs";
 import WorkingProcess from "../components/client/LandingPage/WorkingProcess";
 
-
 export const metadata = {
     title: "Misoran Interior BD",
     description: "Premium Interior Design Services in Bangladesh",
 };
 
-export default function Home() {
+export default async function Home() {
+    let settings = await getSettingsApi();
+
+    settings = settings.data.error ? null : settings.data;
+
     return (
         <main className="font-sans bg-white text-gray-900">
-
             <HeroSection />
-            
-            <About />
 
-            <Services />
+            <About about={settings ? settings.about : null} />
+
+            <Services services={settings ? settings.services : []} />
 
             <WhyChooseUs />
 
-            <Portfolio />
+            <Portfolio projects={settings ? settings.projects : []} />
 
-            <ProjectVideoSection />
+            <ProjectVideoSection videos={settings ? settings.videos : []} />
 
             <WorkingProcess />
 
@@ -41,7 +44,6 @@ export default function Home() {
             <Contact />
 
             <Footer />
-
         </main>
     );
 }

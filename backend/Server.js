@@ -11,6 +11,8 @@ const ServiceRouters = require("./Routers/ServiceRouters");
 const ProjectRouters = require("./Routers/ProjectRouters");
 const SettingsRouters = require("./Routers/SettingsRouters");
 const VideosRouters = require("./Routers/videoRouters");
+const ClientRouters = require("./Routers/ClientRouters");
+const ReviewRouters = require("./Routers/ReviewRouters");
 const cron = require("node-cron");
 const axios = require("axios");
 
@@ -54,6 +56,8 @@ app.use("/api/service", ServiceRouters);
 app.use("/api/project", ProjectRouters);
 app.use("/api/settings", SettingsRouters);
 app.use("/api/videos", VideosRouters);
+app.use("/api/client", ClientRouters);
+app.use("/api/review", ReviewRouters);
 
 app.get("/", (req, res) => res.sendFile(path.resolve("./Server.html")));
 
