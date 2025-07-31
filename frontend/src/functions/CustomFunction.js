@@ -1,9 +1,6 @@
-
-
 export const imageSrc = (name) => process.env.NEXT_PUBLIC_CLOUDINARY_URL + name; // cloudinary
 
 export const cleanObject = (obj) => {
-    
     let newObj = {};
 
     for (let key in obj) {
@@ -17,3 +14,6 @@ export const cleanObject = (obj) => {
     return newObj;
 };
 
+export const slugify = (text) => {
+    return text.trim().replace(/\s+/g, "-");
+};

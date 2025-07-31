@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { getAllProjectsApi } from "@/src/api/ProjectApi";
+import Link from "next/link";
+import { slugify } from "@/src/functions/CustomFunction";
+
 
 export default function ShowAllProjects() {
     const [projects, setProjects] = useState([]);
@@ -40,7 +43,8 @@ export default function ShowAllProjects() {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {projects.map((project) => (
-                            <div
+                            <Link
+                                href={`/project/${slugify(project.name)}`}
                                 key={project._id}
                                 className="group relative bg-white/30 backdrop-blur-lg rounded-3xl border border-white/40 overflow-hidden shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
                             >
@@ -80,7 +84,7 @@ export default function ShowAllProjects() {
 
                                 {/* Optional glow behind */}
                                 <div className="absolute -bottom-10 -left-10 w-36 h-36 bg-white/20 blur-3xl rounded-full pointer-events-none group-hover:scale-110 transition duration-500"></div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 )}
