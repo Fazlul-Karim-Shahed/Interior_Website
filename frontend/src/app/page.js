@@ -19,31 +19,29 @@ export const metadata = {
 export default async function Home() {
     let settings = await getSettingsApi();
 
-    settings = settings.data.error ? null : settings.data;
+    settings = settings?.data?.error ? null : settings?.data;
 
     return (
         <main className="font-sans bg-white text-gray-900">
-            {settings.heroVisibility && <HeroSection />}
+            {settings?.heroVisibility && <HeroSection />}
 
-            {settings.aboutVisibility && <About about={settings ? settings.about : null} />}
+            {settings?.aboutVisibility && <About about={settings ? settings?.about : null} />}
 
-            {settings.servicesVisibility && <Services services={settings ? settings.services : []} />}
+            {settings?.servicesVisibility && <Services services={settings ? settings?.services : []} />}
 
-            {settings.whyChooseUsVisibility && <WhyChooseUs />}
+            {settings?.whyChooseUsVisibility && <WhyChooseUs />}
 
-            {settings.projectsVisibility && <Portfolio projects={settings ? settings.projects : []} />}
+            {settings?.projectsVisibility && <Portfolio projects={settings ? settings?.projects : []} />}
 
-            {settings.videosVisibility && <ProjectVideoSection videos={settings ? settings.videos : []} />}
+            {settings?.videosVisibility && <ProjectVideoSection videos={settings ? settings?.videos : []} />}
 
-            {settings.workingProcessVisibility && <WorkingProcess />}
+            {settings?.workingProcessVisibility && <WorkingProcess />}
 
-            {settings.reviewsVisibility && <ClientReviewSection />}
+            {settings?.reviewsVisibility && <ClientReviewSection />}
 
-            {settings.clientVisibility && <Client />}
+            {settings?.clientVisibility && <Client />}
 
-            {settings.contactVisibility && <Contact />}
-
-            
+            {settings?.contactVisibility && <Contact />}
         </main>
     );
 }

@@ -47,7 +47,7 @@ export default function Navbar() {
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex space-x-8 text-lg font-medium">
-                    {["Home", "Project", "Services", "About", "Contact"].map((item) => (
+                    {["Project", "Services", "About", "Contact"].map((item) => (
                         <Link key={item} href={`/${item.toLowerCase()}`} className="relative text-gray-800 dark:text-white transition duration-300 group">
                             {item}
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-500 transition-all group-hover:w-full"></span>
@@ -87,7 +87,7 @@ export default function Navbar() {
             {/* Mobile Menu */}
             <div ref={menuRef} className="md:hidden overflow-hidden transition-all duration-500 ease-in-out backdrop-blur-lg bg-white/30 dark:bg-black/30" style={{ maxHeight: "0px", opacity: 0 }}>
                 <div className="flex flex-col items-center space-y-4 py-4 text-lg font-medium">
-                    {["Home", "Project", "Services", "About", "Contact"].map((item) => (
+                    {["Project", "Services", "About", "Contact"].map((item) => (
                         <Link key={item} href={`/${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="text-gray-800 dark:text-white hover:text-pink-500 transition">
                             {item}
                         </Link>

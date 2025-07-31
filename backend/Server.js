@@ -13,6 +13,7 @@ const SettingsRouters = require("./Routers/SettingsRouters");
 const VideosRouters = require("./Routers/videoRouters");
 const ClientRouters = require("./Routers/ClientRouters");
 const ReviewRouters = require("./Routers/ReviewRouters");
+const BookingRouters = require("./Routers/BookingRouters");
 const cron = require("node-cron");
 const axios = require("axios");
 
@@ -58,6 +59,7 @@ app.use("/api/settings", SettingsRouters);
 app.use("/api/videos", VideosRouters);
 app.use("/api/client", ClientRouters);
 app.use("/api/review", ReviewRouters);
+app.use("/api/booking", BookingRouters);
 
 app.get("/", (req, res) => res.sendFile(path.resolve("./Server.html")));
 
