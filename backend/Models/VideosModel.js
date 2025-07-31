@@ -5,7 +5,7 @@ const VideosModel = model(
     new Schema(
         {
             title: { type: String, required: [true, "Video name is required"] },
-            url: { type: Object, name: String, url: String, contentType: String },
+            url: { type: String, required: [true, "Video URL is required"] },
         },
         { timestamps: true }
     )

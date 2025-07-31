@@ -30,23 +30,20 @@ export const createVideoApi = async (data) => {
 };
 
 // ✅ Update Video
-export const updateVideoApi = async (data) => {
-    try {
-        const res = await axios.put(BASE_URL, data, {
-            ...config,
+export const updateVideoApi = (id, obj) => {
+    return axios
+        .put(process.env.NEXT_PUBLIC_BACKEND_URL + "/api/videos/" + id, obj, {
             headers: {
-                ...config.headers,
                 "Content-Type": "multipart/form-data",
+                Authorization: "Bearer " + localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_TOKEN_NAME),
             },
+        })
+        .then((response) => response.data)
+        .catch((error) => {
+            return { message: `Something went wrong. - (${error.message}). Try again`, error: true };
         });
-        return res.data;
-    } catch (error) {
-        return {
-            error: true,
-            message: error?.response?.data?.message || error.message,
-        };
-    }
 };
+
 
 // ✅ Delete Video
 export const deleteVideoApi = async (id) => {

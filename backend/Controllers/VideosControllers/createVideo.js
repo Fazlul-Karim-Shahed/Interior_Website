@@ -22,11 +22,7 @@ const createVideo = async (req, res) => {
 
             const video = await VideosModel.create({
                 title,
-                url: {
-                    name: title,
-                    url: url,
-                    contentType: "iframe/html",
-                },
+                url: url,
             });
 
             res.send({ message: "Video created successfully", data: video, error: false });

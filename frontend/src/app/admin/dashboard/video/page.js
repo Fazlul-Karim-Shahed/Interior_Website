@@ -28,7 +28,7 @@ const AllVideos = () => {
     const handleEdit = (video) => {
         setEditingId(video._id);
         setEditTitle(video.title);
-        setEditIframe(video.url?.url?.url || "");
+        setEditIframe(video.url || "");
     };
 
     const handleCancel = () => {
@@ -46,17 +46,17 @@ const AllVideos = () => {
         const formData = new FormData();
         formData.append("title", editTitle);
         formData.append("url", editIframe);
+        formData.append("id", editingId);
 
-        const res = await updateVideoApi(id, formData);
-        setLoading(false);
-
-        if (res.error) {
-            setMessage({ text: res.message, type: "error" });
-        } else {
-            setMessage({ text: "Video updated successfully", type: "success" });
-            setEditingId(null);
-            fetchVideos();
-        }
+        updateVideoApi(id, formData).then((data) => {
+            if (data.error) {
+                setMessage({ text: data.message, type: "error" });
+            } else {
+                setMessage({ text: data.message, type: "success" });
+                setEditingId(null);
+                fetchVideos();
+            }
+        });
     };
 
     const handleDelete = async (id) => {
@@ -80,7 +80,7 @@ const AllVideos = () => {
             ) : (
                 videos.map((video) => (
                     <div key={video._id} className="mb-8 border-b pb-6">
-                      {console.log(video)}
+                        {console.log(video)}
                         {editingId === video._id ? (
                             <>
                                 <input type="text" value={editTitle} onChange={(e) => setEditTitle(e.target.value)} placeholder="Video Title" className="w-full mb-2 px-4 py-2 border rounded" />
@@ -98,7 +98,19 @@ const AllVideos = () => {
                         ) : (
                             <>
                                 <h4 className="text-lg font-semibold mb-2">{video.title}</h4>
-                                <div dangerouslySetInnerHTML={{ __html: video.url?.url?.url || "" }} className="mb-3" />
+                                <div className="mb-3">
+                                    <iframe
+                                        width="560"
+                                        height="315"
+                                        src={video.url}
+                                        title={video.title}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowFullScreen
+                                        className="w-full max-w-full"
+                                    ></iframe>
+                                </div>
+
                                 <div className="flex gap-4">
                                     <button onClick={() => handleEdit(video)} className="text-blue-600 hover:underline">
                                         Edit

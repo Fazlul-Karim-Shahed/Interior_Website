@@ -9,10 +9,17 @@ const CreateVideo = () => {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null);
 
-    // Extract src from full iframe
+    // Extracts src from iframe and removes query parameters
     const extractSrcFromIframe = (html) => {
         const match = html.match(/src="([^"]+)"/);
-        return match ? match[1] : null;
+        if (!match) return null;
+
+        try {
+            const url = new URL(match[1]);
+            return url.origin + url.pathname; // Remove query string
+        } catch (err) {
+            return null;
+        }
     };
 
     const handleSubmit = async () => {
@@ -23,16 +30,12 @@ const CreateVideo = () => {
         const extractedUrl = extractSrcFromIframe(iframeHtml);
 
         if (!extractedUrl) {
-            return setMessage({ text: "Invalid iframe. Make sure it contains a src attribute.", type: "error" });
+            return setMessage({ text: "Invalid iframe. Make sure it contains a valid src.", type: "error" });
         }
 
         const payload = {
             title,
-            url: {
-                url: extractedUrl,
-                name: title,
-                contentType: "iframe/html",
-            },
+            url: extractedUrl,
         };
 
         setLoading(true);
