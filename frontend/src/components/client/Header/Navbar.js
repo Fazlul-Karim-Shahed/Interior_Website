@@ -41,14 +41,14 @@ export default function Navbar() {
         <nav className="w-full z-50 backdrop-blur-md bg-[#fefbfb] dark:bg-black/30 shadow transition-colors duration-500">
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
-                <div>
+                <Link href={'/'}>
                     <Image src={Logo} alt="Logo" width={80} height={100} />
-                </div>
+                </Link>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex space-x-8 text-lg font-medium">
-                    {["Home", "Portfolio", "Services", "Contact"].map((item) => (
-                        <Link key={item} href={`#${item.toLowerCase()}`} className="relative text-gray-800 dark:text-white transition duration-300 group">
+                    {["Home", "Project", "Services", "Contact"].map((item) => (
+                        <Link key={item} href={`/${item.toLowerCase()}`} className="relative text-gray-800 dark:text-white transition duration-300 group">
                             {item}
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-500 transition-all group-hover:w-full"></span>
                         </Link>

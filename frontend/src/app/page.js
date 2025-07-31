@@ -43,7 +43,7 @@ export default async function Home() {
 
             {settings.contactVisibility && <Contact />}
 
-            <Footer />
+            
         </main>
     );
 }

@@ -14,6 +14,7 @@
         "@fortawesome/react-fontawesome": "^0.2.2",
         "@plaiceholder/next": "^3.0.0",
         "@reduxjs/toolkit": "^2.2.5",
+        "@tailwindcss/line-clamp": "^0.4.4",
         "@tailwindcss/typography": "^0.5.15",
         "axios": "^1.7.2",
         "daisyui": "^5.0.47",

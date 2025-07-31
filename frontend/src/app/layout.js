@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../components/client/Header/Navbar";
 import ReduxProvider from "../redux/ReduxProvider";
 import Preload from "../components/admin/Preload/Preload";
+import Footer from "../components/client/Footer/Footer";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
                     <Preload />
                     <Navbar />
                     {children}
+                    <Footer />
                 </ReduxProvider>
             </body>
         </html>
