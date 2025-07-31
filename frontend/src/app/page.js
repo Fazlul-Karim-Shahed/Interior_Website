@@ -23,25 +23,25 @@ export default async function Home() {
 
     return (
         <main className="font-sans bg-white text-gray-900">
-            <HeroSection />
+            {settings.heroVisibility && <HeroSection />}
 
-            <About about={settings ? settings.about : null} />
+            {settings.aboutVisibility && <About about={settings ? settings.about : null} />}
 
-            <Services services={settings ? settings.services : []} />
+            {settings.servicesVisibility && <Services services={settings ? settings.services : []} />}
 
-            <WhyChooseUs />
+            {settings.whyChooseUsVisibility && <WhyChooseUs />}
 
-            <Portfolio projects={settings ? settings.projects : []} />
+            {settings.projectsVisibility && <Portfolio projects={settings ? settings.projects : []} />}
 
-            <ProjectVideoSection videos={settings ? settings.videos : []} />
+            {settings.videosVisibility && <ProjectVideoSection videos={settings ? settings.videos : []} />}
 
-            <WorkingProcess />
+            {settings.workingProcessVisibility && <WorkingProcess />}
 
-            <ClientReviewSection />
+            {settings.reviewsVisibility && <ClientReviewSection />}
 
-            <Client />
+            {settings.clientVisibility && <Client />}
 
-            <Contact />
+            {settings.contactVisibility && <Contact />}
 
             <Footer />
         </main>

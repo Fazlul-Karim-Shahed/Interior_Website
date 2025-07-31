@@ -4,57 +4,32 @@ import { faArrowLeft, faArrowRight, faChevronLeft, faChevronRight } from "@forta
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect, useRef } from "react";
 import GlowBtn from "../../Common/GlowBtn";
-
-const reviews = [
-    {
-        name: "Sarah Johnson",
-        role: "Homeowner",
-        photo: "https://randomuser.me/api/portraits/women/65.jpg",
-        feedback: "Absolutely love the design! They transformed my living room into a cozy and stylish space beyond my expectations.",
-    },
-    {
-        name: "Mark Thompson",
-        role: "Business Owner",
-        photo: "https://randomuser.me/api/portraits/men/44.jpg",
-        feedback: "Professional team with excellent creativity. Our office feels so much more productive and modern now.",
-    },
-    {
-        name: "Lisa Martinez",
-        role: "Interior Enthusiast",
-        photo: "https://randomuser.me/api/portraits/women/22.jpg",
-        feedback: "Custom furniture made by them fits perfectly and adds a unique touch to my home. Highly recommend!",
-    },
-    {
-        name: "James Anderson",
-        role: "Project Manager",
-        photo: "https://randomuser.me/api/portraits/men/30.jpg",
-        feedback: "Great communication and on-time delivery. The 3D design and budget proposal made decision-making super easy.",
-    },
-    {
-        name: "Anna Williams",
-        role: "Architect",
-        photo: "https://randomuser.me/api/portraits/women/47.jpg",
-        feedback: "A wonderful collaboration — the designs were innovative and well executed.",
-    },
-    {
-        name: "David Brown",
-        role: "Entrepreneur",
-        photo: "https://randomuser.me/api/portraits/men/55.jpg",
-        feedback: "Reliable and creative team, delivered above expectations within budget.",
-    },
-];
+import { getAllReviewsApi } from "@/src/api/ReviewApi";
 
 // Duplicate the reviews array to enable seamless infinite scroll
-const duplicatedReviews = [...reviews, ...reviews];
 
 export default function ClientReviewSection() {
     const containerRef = useRef(null);
     const [slidesToShow, setSlidesToShow] = useState(1);
     const [slideWidth, setSlideWidth] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
+    const [reviews, setReviews] = useState([]);
+
+    
 
     // Set slidesToShow based on viewport width
     useEffect(() => {
+
+        getAllReviewsApi().then(data => {
+            if (data.error) {
+                setReviews([]);
+            } else {
+                setReviews(data.data);
+            }
+        })
+
+
+
         function updateSlidesToShow() {
             if (window.innerWidth >= 1024) setSlidesToShow(3);
             else if (window.innerWidth >= 640) setSlidesToShow(2);
@@ -64,6 +39,8 @@ export default function ClientReviewSection() {
         window.addEventListener("resize", updateSlidesToShow);
         return () => window.removeEventListener("resize", updateSlidesToShow);
     }, []);
+
+    const duplicatedReviews = [...reviews, ...reviews];
 
     // Set slideWidth in px dynamically after render and on slidesToShow change
     useEffect(() => {
@@ -130,7 +107,7 @@ export default function ClientReviewSection() {
             <div className="relative max-w-7xl mx-auto">
                 {/* Slider viewport */}
                 <div className="flex will-change-transform cursor-grab" ref={containerRef} style={{ userSelect: "none" }}>
-                    {duplicatedReviews.map(({ name, role, photo, feedback }, idx) => (
+                    {duplicatedReviews.map(({ name, customerDesignation, customerImage, review }, idx) => (
                         <div key={idx} className="p-6 flex-shrink-0" style={{ width: `${slideWidth}px`, boxSizing: "border-box" }}>
                             <div
                                 onMouseEnter={() => setIsHovered(true)}
@@ -141,13 +118,13 @@ export default function ClientReviewSection() {
                                     <path d="M7.17 6A5.002 5.002 0 0 1 12 11v7h-3v-7a2 2 0 1 0-1.83-5zM17.17 6A5.002 5.002 0 0 1 22 11v7h-3v-7a2 2 0 1 0-1.83-5z" />
                                 </svg>
 
-                                <p className="text-brand-800 italic mb-8 flex-grow">{feedback}</p>
+                                <p className="text-brand-800 italic mb-8 flex-grow">{review}</p>
 
                                 <div className="flex items-center space-x-4">
-                                    <img src={photo} alt={name} className="w-16 h-16 rounded-full border-4 border-brand-500 shadow-lg flex-shrink-0" />
+                                    <img src={customerImage.url} alt={name} className="w-16 h-16 rounded-full border-4 border-brand-500 shadow-lg flex-shrink-0" />
                                     <div>
                                         <h3 className="text-brand-900 font-bold text-lg">{name}</h3>
-                                        <p className="text-brand-700 text-sm">{role}</p>
+                                        <p className="text-brand-700 text-sm">{customerDesignation}</p>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { faTachometerAlt, faBoxOpen, faPlus, faList, faWrench, faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretUp, faTachometerAlt, faUserTie, faStar, faCogs, faVideo, faTools, faProjectDiagram } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,7 +13,7 @@ const navGroups = [
     },
     {
         label: "Services",
-        icon: faWrench,
+        icon: faTools, // wrench → tools (more suitable for services)
         items: [
             { label: "Create", href: "/admin/dashboard/service/create" },
             { label: "Show All", href: "/admin/dashboard/service" },
@@ -21,48 +21,46 @@ const navGroups = [
     },
     {
         label: "Projects",
-        icon: faBoxOpen,
+        icon: faProjectDiagram, // boxOpen → projectDiagram (more visual for project)
         items: [
             { label: "Create", href: "/admin/dashboard/project/create" },
             { label: "Show All", href: "/admin/dashboard/project" },
         ],
     },
-
     {
         label: "Client",
-        icon: faBoxOpen,
+        icon: faUserTie, // boxOpen → userTie (corporate client image)
         items: [
             { label: "Create", href: "/admin/dashboard/client/create" },
             { label: "Show All", href: "/admin/dashboard/client" },
         ],
     },
-
     {
         label: "Review",
-        icon: faBoxOpen,
+        icon: faStar, // boxOpen → star (suits reviews/testimonials)
         items: [
             { label: "Create", href: "/admin/dashboard/review/create" },
             { label: "Show All", href: "/admin/dashboard/review" },
         ],
     },
-
+    {
+        label: "Videos",
+        icon: faVideo, // plus → video (better visual for videos section)
+        items: [
+            { label: "Create", href: "/admin/dashboard/video/create" },
+            { label: "Show All", href: "/admin/dashboard/video" },
+        ],
+    },
     {
         label: "Customize",
-        icon: faList,
+        icon: faCogs, // list → cogs (for configuration/customization)
         items: [
             { label: "About", href: "/admin/dashboard/customize/about" },
             { label: "Slider", href: "/admin/dashboard/customize/slider" },
             { label: "Service", href: "/admin/dashboard/customize/service" },
             { label: "Project", href: "/admin/dashboard/customize/project" },
             { label: "Video", href: "/admin/dashboard/customize/video" },
-        ],
-    },
-    {
-        label: "Videos",
-        icon: faPlus,
-        items: [
-            { label: "Create", href: "/admin/dashboard/video/create" },
-            { label: "Show All", href: "/admin/dashboard/video" },
+            { label: "Visibility", href: "/admin/dashboard/customize/visibility" },
         ],
     },
 ];

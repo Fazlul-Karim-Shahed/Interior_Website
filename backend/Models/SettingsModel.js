@@ -9,6 +9,16 @@ const SettingsModel = model(
             services: [{ type: Schema.Types.ObjectId, ref: "Service" }],
             projects: [{ type: Schema.Types.ObjectId, ref: "Project" }],
             videos: [{ type: Schema.Types.ObjectId, ref: "Videos" }],
+            heroVisibility: { type: Boolean, default: true },
+            aboutVisibility: { type: Boolean, default: true },
+            servicesVisibility: { type: Boolean, default: true },
+            whyChooseUsVisibility: { type: Boolean, default: true },
+            projectsVisibility: { type: Boolean, default: true },
+            videosVisibility: { type: Boolean, default: true },
+            workingProcessVisibility: { type: Boolean, default: true },
+            reviewVisibility: { type: Boolean, default: true },
+            clientVisibility: { type: Boolean, default: true },
+            contactVisibility: { type: Boolean, default: true },
         },
         { timestamps: true }
     )

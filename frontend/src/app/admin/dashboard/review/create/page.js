@@ -50,7 +50,6 @@ export default function CreateReviewPage() {
             alert(res.message);
         } else {
             alert("Review created successfully!");
-            router.push("/dashboard/review"); // Redirect to review list page
         }
     };
 
@@ -92,10 +91,23 @@ export default function CreateReviewPage() {
                     />
                 </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Customer Image</label>
-                    <input type="file" accept="image/*" onChange={handleImageChange} className="w-full" />
-                    {preview && <img src={preview} alt="Preview" className="mt-3 h-32 object-contain rounded border mx-auto" />}
+                <div className="mb-6">
+                    <label className="block mb-2 font-semibold text-gray-700">Customer Image</label>
+                    <div className="flex items-center space-x-4">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            className="block w-full text-sm text-gray-600
+                 file:mr-4 file:py-2 file:px-4
+                 file:rounded-md file:border-0
+                 file:text-sm file:font-semibold
+                 file:bg-purple-100 file:text-purple-700
+                 hover:file:bg-purple-200
+                 cursor-pointer"
+                        />
+                    </div>
+                    {preview && <img src={preview} alt="Preview" className="mt-4 mx-auto h-32 w-32 rounded-lg object-cover border border-gray-300 shadow-sm" />}
                 </div>
 
                 <button type="submit" disabled={loading} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition disabled:opacity-50">

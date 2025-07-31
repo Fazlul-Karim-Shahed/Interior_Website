@@ -42,12 +42,11 @@ export default function CreateClientPage() {
             alert(res.message);
         } else {
             alert("Client created successfully!");
-            router.push("/dashboard/client"); // Redirect to client list
         }
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+        <div className="p-6 bg-white rounded-lg">
             <h1 className="text-2xl font-bold mb-4">Create New Client</h1>
             <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
@@ -62,10 +61,23 @@ export default function CreateClientPage() {
                     />
                 </div>
 
-                <div>
-                    <label className="block mb-1 font-medium">Client Image</label>
-                    <input type="file" accept="image/*" onChange={handleImageChange} className="w-full" />
-                    {preview && <img src={preview} alt="Preview" className="mt-3 h-32 object-contain rounded border" />}
+                <div className="mb-6">
+                    <label className="block mb-2 font-semibold text-gray-700">Client Image</label>
+                    <div className="flex items-center space-x-4">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            className="block w-full text-sm text-gray-600
+                 file:mr-4 file:py-2 file:px-4
+                 file:rounded-md file:border-0
+                 file:text-sm file:font-semibold
+                 file:bg-purple-100 file:text-purple-700
+                 hover:file:bg-purple-200
+                 cursor-pointer"
+                        />
+                    </div>
+                    {preview && <img src={preview} alt="Preview" className="mt-4 mx-auto h-32 w-32 rounded-lg object-cover border border-gray-300 shadow-sm" />}
                 </div>
 
                 <button type="submit" disabled={loading} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition disabled:opacity-50">

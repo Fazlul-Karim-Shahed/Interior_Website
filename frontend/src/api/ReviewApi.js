@@ -3,11 +3,14 @@ import axios from "axios";
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL + "/api/review";
 
 // Get all reviews
-export const getAllReviewsApi = () => {
-    return fetch(BASE_URL, { cache: "no-cache" })
+// src/api/reviewApi.js
+export const getAllReviewsApi = async () => {
+    return fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/review`, {
+        cache: "no-cache",
+    })
         .then((res) => res.json())
         .catch((err) => ({
-            message: `Something went wrong. - (${err.message}). Try again`,
+            message: `Something went wrong - ${err.message}`,
             error: true,
         }));
 };
@@ -28,8 +31,7 @@ export const createReviewApi = (formData) => {
         .post(BASE_URL, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
-                Authorization:
-                    "Bearer " + localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_TOKEN_NAME),
+                Authorization: "Bearer " + localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_TOKEN_NAME),
             },
         })
         .then((res) => res.data)
@@ -45,8 +47,7 @@ export const updateReviewApi = (id, formData) => {
         .put(`${BASE_URL}/${id}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
-                Authorization:
-                    "Bearer " + localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_TOKEN_NAME),
+                Authorization: "Bearer " + localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_TOKEN_NAME),
             },
         })
         .then((res) => res.data)
@@ -61,8 +62,7 @@ export const deleteReviewApi = (id) => {
     return axios
         .delete(`${BASE_URL}/${id}`, {
             headers: {
-                Authorization:
-                    "Bearer " + localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_TOKEN_NAME),
+                Authorization: "Bearer " + localStorage.getItem(process.env.NEXT_PUBLIC_LOCAL_TOKEN_NAME),
             },
         })
         .then((res) => res.data)
