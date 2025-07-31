@@ -19,6 +19,7 @@ const SettingsModel = model(
             reviewVisibility: { type: Boolean, default: true },
             clientVisibility: { type: Boolean, default: true },
             contactVisibility: { type: Boolean, default: true },
+            signupVisibility: { type: Boolean, default: true },
         },
         { timestamps: true }
     )

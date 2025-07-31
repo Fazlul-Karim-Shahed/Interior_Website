@@ -15,6 +15,7 @@ const VISIBILITY_FIELDS = [
     { key: "reviewVisibility", label: "Review Section" },
     { key: "clientVisibility", label: "Client Section" },
     { key: "contactVisibility", label: "Contact Section" },
+    { key: "signupVisibility", label: "Signup Section" },
 ];
 
 export default function VisibilitySettings() {
@@ -73,7 +74,7 @@ export default function VisibilitySettings() {
     if (loading) return <div className="text-center py-10">Loading settings...</div>;
 
     return (
-        <div className="max-w-xl mx-auto p-6">
+        <div className="p-6">
             <h2 className="text-2xl font-bold mb-6 text-center">Visibility Settings</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 {VISIBILITY_FIELDS.map(({ key, label }) => (
