@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faUser, faWrench } from "@fortawesome/free-solid-svg-icons";
 import { getServiceByNameApi } from "@/src/api/ServiceApi";
 import Loading from "@/src/components/client/Loading/Loading";
+import Link from "next/link";
+import { slugify } from "@/src/functions/CustomFunction";
 
 export default function ServicePage() {
     const { name } = useParams();
@@ -109,7 +111,11 @@ export default function ServicePage() {
                 <h2 className="text-3xl font-bold text-gray-800 mb-6">Featured Projects</h2>
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {projects.map((project) => (
-                        <div key={project._id} className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100">
+                        <Link
+                            href={`/project/${slugify(project.name)}`}
+                            key={project._id}
+                            className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100"
+                        >
                             <div className="relative aspect-[4/3] overflow-hidden">
                                 <img
                                     src={project.featureImage?.url || "/placeholder.jpg"}
@@ -132,7 +138,7 @@ export default function ServicePage() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </section>
