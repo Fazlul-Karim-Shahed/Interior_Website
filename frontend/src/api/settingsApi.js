@@ -16,7 +16,6 @@ export const createSettingsApi = (obj) => {
     return data;
 };
 
-
 export const updateSettingsApi = (obj) => {
     return axios
         .put(process.env.NEXT_PUBLIC_BACKEND_URL + "/api/settings/688a67d88d03a4e576e9fe0a", obj, {
@@ -31,12 +30,11 @@ export const updateSettingsApi = (obj) => {
         });
 };
 
-
 export const getSettingsApi = () => {
-    return axios
-        .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/api/settings")
-        .then((response) => response.data)
-        .catch((error) => {
-            return { message: `Failed to load settings - (${error.message})`, error: true };
-        });
+    return fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/api/settings", { cache: "no-cache" })
+        .then((res) => res.json())
+        .catch((err) => ({
+            message: `Something went wrong. - (${err.message}). Try again`,
+            error: true,
+        }));
 };
