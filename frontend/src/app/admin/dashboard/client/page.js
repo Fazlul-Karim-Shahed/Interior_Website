@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { getAllClientsApi, updateClientApi, deleteClientApi } from "@/src/api/ClientApi";
+import Loading from "@/src/components/client/Loading/Loading";
 
 export default function AllClientsPage() {
     const [clients, setClients] = useState([]);
@@ -70,9 +71,7 @@ export default function AllClientsPage() {
             <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Client List</h1>
 
             {loading ? (
-                <div className="flex justify-center items-center h-40">
-                    <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                </div>
+                <Loading />
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {clients.map((client) => (

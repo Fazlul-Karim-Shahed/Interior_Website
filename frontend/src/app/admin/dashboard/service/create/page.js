@@ -57,7 +57,7 @@ export default function page() {
     };
 
     return (
-        <div className="mx-auto p-6 bg-white dark:bg-gray-900 rounded-2xl mt-">
+        <div className="mx-auto p-6  dark:bg-gray-900 rounded-2xl mt-">
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">Create New Service</h2>
             {message && <p className="mb-4 text-center text-sm text-red-500">{message}</p>}
 

@@ -110,7 +110,7 @@ export default function CreateProjectPage() {
     };
 
     return (
-        <div className="mx-auto p-6 bg-white dark:bg-gray-900 rounded-2xl mt-10">
+        <div className="mx-auto p-6 dark:bg-gray-900 rounded-2xl mt-10">
             <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">Create New Project</h2>
 
             {message && <p className={`mb-6 text-center text-sm ${message.startsWith("✅") ? "text-green-600" : "text-red-600"} font-semibold`}>{message}</p>}

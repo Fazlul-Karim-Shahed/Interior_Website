@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { getAllServiceApi } from "@/src/api/ServiceApi";
+import Link from "next/link";
+import { slugify } from "@/src/functions/CustomFunction";
+import Loading from "@/src/components/client/Loading/Loading";
 
 export default function ShowAllServices() {
     const [services, setServices] = useState([]);
@@ -19,7 +22,7 @@ export default function ShowAllServices() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white text-gray-800">
+        <div className="min-h-screen text-gray-800">
             {/* HEADER SECTION */}
             <div
                 className="w-full h-56 md:h-72 bg-cover bg-center relative flex items-center justify-center"
@@ -35,13 +38,17 @@ export default function ShowAllServices() {
             {/* SERVICES LIST */}
             <div className="px-6 md:px-20 py-16">
                 {loading ? (
-                    <p className="text-center text-gray-500 text-lg">Loading services...</p>
+                    <Loading />
                 ) : services.length === 0 ? (
                     <p className="text-center text-red-500 text-lg">No services found.</p>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {services.map(({ _id, name, description, image }) => (
-                            <div key={_id} className="bg-white/30 backdrop-blur-md border border-white/50 shadow-xl hover:shadow-2xl transition duration-300 rounded-3xl overflow-hidden">
+                            <Link
+                                href={`/services/${slugify(name)}`}
+                                key={_id}
+                                className="bg-white/30 backdrop-blur-md border border-white/50 shadow-xl hover:shadow-2xl transition duration-300 rounded-3xl overflow-hidden"
+                            >
                                 {/* Responsive Image Box */}
                                 {image?.url && (
                                     <div className="relative w-full pt-[56.25%] overflow-hidden">
@@ -56,7 +63,7 @@ export default function ShowAllServices() {
                                         <div dangerouslySetInnerHTML={{ __html: description }} />
                                     </p>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 )}

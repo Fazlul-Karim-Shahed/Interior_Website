@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen bg-white text-gray-800 font-sans">
+        <main className="min-h-screen text-gray-800 font-sans">
             {/* Banner Section */}
             <section className="relative w-full h-[60vh] overflow-hidden">
                 <Image

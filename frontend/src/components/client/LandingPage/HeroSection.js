@@ -5,6 +5,7 @@ import Image from "next/image";
 import banner1 from "@/public/banner.jpg";
 import banner2 from "@/public/22.jpg";
 import GlowBtn from "../../Common/GlowBtn";
+import Link from "next/link";
 
 const slides = [
     { src: banner1, alt: "Interior 1" },
@@ -45,7 +46,7 @@ export default function HeroSection() {
 
                 <p className="text-md md:text-xl mb-6">Elegant and functional interior design tailored to your vision.</p>
                 <GlowBtn effect="slide_from_left" animation color="primary" size={{ sm: "md", md: "lg" }}>
-                    Book Free Consultation
+                    <Link href={"/contact"}>Book Free Consultation</Link>
                 </GlowBtn>
             </div>
 

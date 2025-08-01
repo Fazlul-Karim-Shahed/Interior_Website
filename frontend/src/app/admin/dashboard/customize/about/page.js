@@ -48,7 +48,7 @@ const AboutSettings = () => {
     };
 
     return (
-        <div className="bg-white p-3 rounded-xl ">
+        <div className="p-3 rounded-xl ">
             <h2 className="text-2xl font-bold mb-4">Edit About Section</h2>
 
             <JoditEditor

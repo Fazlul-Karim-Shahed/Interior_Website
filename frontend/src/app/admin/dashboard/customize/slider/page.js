@@ -82,7 +82,7 @@ const SliderSettings = () => {
     };
 
     return (
-        <div className=" bg-white rounded-xl p-3">
+        <div className="rounded-xl p-3">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Manage Slider Images</h2>
 
             {/* Existing Images */}

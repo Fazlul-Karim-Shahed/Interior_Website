@@ -52,7 +52,7 @@ const CreateVideo = () => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow mt-10">
+        <div className="max-w-3xl mx-auto p-6 rounded-xl shadow mt-10">
             <h2 className="text-2xl font-bold mb-6">Add Embedded YouTube Video</h2>
 
             <div className="mb-4">

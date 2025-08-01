@@ -65,7 +65,7 @@ export default function UpdateServicePage() {
     };
 
     return (
-        <div className="p-3 mt-10 bg-white dark:bg-gray-900 rounded-xl">
+        <div className="p-3 mt-10  dark:bg-gray-900 rounded-xl">
             <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-4">Update Service</h2>
             {message && <p className="text-center text-red-500 mb-4">{message}</p>}
 

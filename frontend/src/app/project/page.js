@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getAllProjectsApi } from "@/src/api/ProjectApi";
 import Link from "next/link";
 import { slugify } from "@/src/functions/CustomFunction";
-
+import Loading from "@/src/components/client/Loading/Loading";
 
 export default function ShowAllProjects() {
     const [projects, setProjects] = useState([]);
@@ -22,7 +22,7 @@ export default function ShowAllProjects() {
     }, []);
 
     return (
-        <div className="bg-gradient-to-br from-white via-gray-50 to-white min-h-screen">
+        <div className="min-h-screen">
             {/* Header */}
             <div
                 className="w-full h-56 md:h-72 bg-cover bg-center relative flex items-center justify-center"
@@ -37,7 +37,7 @@ export default function ShowAllProjects() {
             {/* Projects Grid */}
             <div className="px-6 md:px-20 py-16">
                 {loading ? (
-                    <p className="text-center text-gray-500 text-lg">Loading projects...</p>
+                    <Loading />
                 ) : projects.length === 0 ? (
                     <p className="text-center text-red-500 text-lg">No projects found.</p>
                 ) : (

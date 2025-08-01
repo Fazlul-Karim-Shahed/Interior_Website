@@ -16,7 +16,6 @@ export const createServiceApi = (obj) => {
     return data;
 };
 
-
 // Update Service
 export const updateServiceApi = (formData, id) => {
     return axios
@@ -74,4 +73,13 @@ export const deleteServiceApi = (id) => {
                 error: true,
             };
         });
+};
+
+export const getServiceByNameApi = (name) => {
+    return fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service/name/${name}`, { cache: "no-cache" })
+        .then((res) => res.json())
+        .catch((err) => ({
+            message: `Something went wrong. - (${err.message}). Try again`,
+            error: true,
+        }));
 };

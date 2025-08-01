@@ -54,7 +54,7 @@ export default function CreateReviewPage() {
     };
 
     return (
-        <div className="p-6 bg-white rounded-lg">
+        <div className="p-6 rounded-lg">
             <h1 className="text-2xl font-bold mb-6 text-center">Create New Review</h1>
             <form onSubmit={handleSubmit} className="space-y-5">
                 <div>

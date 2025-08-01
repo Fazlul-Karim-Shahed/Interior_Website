@@ -36,7 +36,7 @@ export default function Contact() {
     });
 
     return (
-        <section className="pt-10 pb-5 px-6 md:px-20 bg-brand-600 text-white">
+        <section className="pt-10 pb-12 px-6 md:px-20 bg-brand-600 text-white">
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-center">Start Your Interior Journey Today</h2>
                 <p className="mb-10 max-w-2xl mx-auto text-center text-brand-100">Contact us to get a free consultation and see how we can help bring your vision to life.</p>

@@ -6,6 +6,7 @@ import { getProjectByNameApi } from "@/src/api/ProjectApi";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faUser, faWrench } from "@fortawesome/free-solid-svg-icons";
+import Loading from "@/src/components/client/Loading/Loading";
 
 export default function ProjectDetailsPage() {
     const { name } = useParams();
@@ -34,7 +35,7 @@ export default function ProjectDetailsPage() {
     }, [name]);
 
     if (loading) {
-        return <div className="min-h-screen flex items-center justify-center text-gray-600 text-lg">Loading project details...</div>;
+        return <Loading />;
     }
 
     if (error) {
@@ -44,7 +45,7 @@ export default function ProjectDetailsPage() {
     if (!project) return null;
 
     return (
-        <main className="bg-white min-h-screen">
+        <main className=" min-h-screen">
             {/* Header Section with Title & Image Side-by-Side */}
             {/* Project Title + Image Section */}
             <div className="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">

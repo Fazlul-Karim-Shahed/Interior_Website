@@ -22,7 +22,7 @@ export default async function Home() {
     settings = settings?.data?.error ? null : settings?.data;
 
     return (
-        <main className="font-sans bg-white text-gray-900">
+        <main className="font-sans text-gray-900">
             {settings?.heroVisibility && <HeroSection />}
 
             {settings?.aboutVisibility && <About about={settings ? settings?.about : null} />}

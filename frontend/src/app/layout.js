@@ -24,7 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased textured-bg min-h-screen`}>
                 <ReduxProvider>
                     <Preload />
                     <Navbar />

@@ -76,19 +76,19 @@ export default function SuperAdminDashboardlayout({ children }) {
     const linkClasses = "flex items-center gap-3 m-2 px-4 py-2 rounded-xl text-[15px] font-medium transition hover:bg-emerald-100 hover:text-emerald-800 text-emerald-900";
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-white via-emerald-50 to-white text-emerald-900">
+        <div className="min-h-screen text-emerald-900">
             {/* Mobile Menu */}
             <div className="md:hidden px-4 pt-4">
                 <button
                     onClick={() => setOpen(!open)}
-                    className="w-full flex justify-between items-center bg-white/70 backdrop-blur border border-emerald-300 px-4 py-3 rounded-xl shadow text-emerald-800 font-semibold"
+                    className="w-full flex justify-between items-center  backdrop-blur border border-emerald-300 px-4 py-3 rounded-xl shadow text-emerald-800 font-semibold"
                 >
                     <span>Menu</span>
                     <FontAwesomeIcon icon={open ? faCaretUp : faCaretDown} />
                 </button>
 
                 {open && (
-                    <div className="mt-3 bg-white/80 rounded-2xl shadow-lg backdrop-blur-md border border-emerald-100 p-2">
+                    <div className="mt-3 rounded-2xl shadow-lg backdrop-blur-md border border-emerald-100 p-2">
                         {navGroups.map((group) => (
                             <div key={group.label}>
                                 <button onClick={() => toggleGroup(group.label)} className={`${linkClasses} w-full justify-between`}>

@@ -12,7 +12,7 @@ const steps = [
 
 export default function WorkingProcess() {
     return (
-        <section className="pt-10 pb-5 px-6 text-center bg-gradient-to-br from-brand-50 to-white">
+        <section className="pt-10 pb-5 px-6 text-center ">
             <h2 className="text-4xl font-bold text-brand-900 mb-14">Working Process</h2>
 
             <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5  gap-4 md:gap-7 lg:gap-10">

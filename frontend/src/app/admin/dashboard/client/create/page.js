@@ -46,7 +46,7 @@ export default function CreateClientPage() {
     };
 
     return (
-        <div className="p-6 bg-white rounded-lg">
+        <div className="p-6 rounded-lg">
             <h1 className="text-2xl font-bold mb-4">Create New Client</h1>
             <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
