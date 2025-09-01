@@ -49,14 +49,14 @@ const updateSettings = async (req, res) => {
                 updatedData.sliderImages = updatedSliderImages;
             }
 
-            // ✅ Parse JSON fields
-            const jsonFields = ["services", "projects", "videos"];
+            // ✅ Parse JSON fields (array/object types)
+            const jsonFields = ["services", "projects", "videos", "contact"];
             for (const key of jsonFields) {
                 if (typeof fields[key] === "string") {
                     try {
                         updatedData[key] = JSON.parse(fields[key]);
                     } catch {
-                        updatedData[key] = [];
+                        updatedData[key] = key === "contact" ? {} : [];
                     }
                 }
             }
