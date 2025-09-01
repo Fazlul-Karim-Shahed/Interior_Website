@@ -43,9 +43,9 @@ export default function ServicePage() {
     };
 
     return (
-        <div className="max-w-7xl mx-auto px-6 py-5">
+        <div className="max-w-7xl mx-auto sm:px-6 py-5">
             <div className="flex justify-center items-center mb-8">
-                <h4 className="text-xl font-extrabold text-gray-900 dark:text-white tracking-wide">Services</h4>
+                <h4 className="text-xl font-extrabold text-gray-900 dark:text-white">Services</h4>
             </div>
 
             {errorMsg && <p className="mb-4 text-center text-red-600 font-semibold">{errorMsg}</p>}
@@ -55,7 +55,7 @@ export default function ServicePage() {
             ) : services.length === 0 ? (
                 <p className="text-center text-gray-500 dark:text-gray-400">No services found.</p>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
                     {services.map((service) => (
                         <div
                             key={service._id}
@@ -70,12 +70,12 @@ export default function ServicePage() {
 
                             <div className="p-6">
                                 <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2 truncate">{service.name}</h2>
-                                {service.description && <p className="text-gray-700 dark:text-gray-300 text-sm line-clamp-3">{service.description}</p>}
+                                {/* {service.description && <p className="text-gray-700 dark:text-gray-300 text-sm line-clamp-3">{service.description}</p>} */}
 
-                                <div className="mt-6 flex justify-between items-center">
+                                <div className="mt-6 flex items-center space-x-2">
                                     <Link href={`/admin/dashboard/service/update/${service._id}`}>
                                         <button
-                                            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md
+                                            className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md
                       transition transform active:scale-95"
                                         >
                                             Update
@@ -85,7 +85,7 @@ export default function ServicePage() {
                                     <button
                                         disabled={deletingId === service._id}
                                         onClick={() => handleDelete(service._id)}
-                                        className={`px-4 py-2 rounded-lg text-white shadow-md transition
+                                        className={`px-3 py-1 rounded-lg text-white shadow-md transition
                       ${deletingId === service._id ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"}
                       active:scale-95`}
                                     >
