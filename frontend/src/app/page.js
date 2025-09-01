@@ -38,7 +38,7 @@ export default async function Home() {
 
             {settings?.workingProcessVisibility && <WorkingProcess />}
 
-            {settings?.reviewsVisibility && <ClientReviewSection />}
+            {settings?.reviewVisibility && <ClientReviewSection />}
 
             {settings?.clientVisibility && <Client />}
 

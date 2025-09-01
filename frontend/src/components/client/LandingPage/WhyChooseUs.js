@@ -41,14 +41,14 @@ export default function WhyChooseUs() {
                     {features.map((feature, index) => (
                         <div
                             key={index}
-                            className={`bg-gradient-to-br ${feature.color} text-white py-7 px-1 md:py-8 md:px-8 rounded-2xl shadow-xl transition-transform duration-300 transform hover:scale-105 group`}
+                            className={`bg-gradient-to-br ${feature.color} text-white py-7 px-2 md:py-8 md:px-8 rounded-2xl shadow-xl transition-transform duration-300 transform hover:scale-105 group`}
                         >
                             <div className="mb-5 flex justify-center">
                                 <div className="bg-white/20 p-4 rounded-full">
                                     <FontAwesomeIcon icon={feature.icon} className="text-white text-3xl" />
                                 </div>
                             </div>
-                            <h3 className="text-sm sm:text-xl font-semibold mb-2">{feature.title}</h3>
+                            <h3 className="text-xs sm:text-xl font-semibold mb-2">{feature.title}</h3>
                             <p className="text-xs sm:text-sm text-white/90 hidden md:block">{feature.desc}</p>
                         </div>
                     ))}
