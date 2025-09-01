@@ -2,20 +2,20 @@
 
 import React from "react";
 
-export default function loading() {
+export default function Loading() {
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-transparent z-50">
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg px-10 py-8 text-center animate-fade-in space-y-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/10 backdrop-blur-sm">
+            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg px-10 py-8 text-center space-y-4 animate-fade-in">
                 {/* Spinner */}
-                <div className="w-10 h-10 border-[3px] border-[#a38a74] border-t-transparent rounded-full animate-spin-slow mx-auto" />
+                <div className="w-10 h-10 border-4 border-[#a38a74] border-t-transparent rounded-full animate-spin mx-auto" />
 
                 {/* Text */}
-                <p className="text-[#4c4037] text-base font-medium animate-pulse-slow">Loading your space...</p>
+                <p className="text-[#4c4037] text-base font-medium animate-pulse">Loading your space...</p>
             </div>
 
             <style jsx>{`
                 .animate-fade-in {
-                    animation: fadeIn 0.4s ease-out both;
+                    animation: fadeIn 0.4s ease-out forwards;
                 }
 
                 @keyframes fadeIn {
@@ -26,33 +26,6 @@ export default function loading() {
                     to {
                         opacity: 1;
                         transform: scale(1);
-                    }
-                }
-
-                .animate-spin-slow {
-                    animation: spin 1.2s linear infinite;
-                }
-
-                @keyframes spin {
-                    from {
-                        transform: rotate(0deg);
-                    }
-                    to {
-                        transform: rotate(360deg);
-                    }
-                }
-
-                .animate-pulse-slow {
-                    animation: pulse 2.2s ease-in-out infinite;
-                }
-
-                @keyframes pulse {
-                    0%,
-                    100% {
-                        opacity: 1;
-                    }
-                    50% {
-                        opacity: 0.5;
                     }
                 }
             `}</style>
