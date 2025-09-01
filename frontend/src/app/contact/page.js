@@ -1,14 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createBookingApi } from "@/src/api/BookingApi";
+import { getSettingsApi } from "@/src/api/settingsApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp, faFacebook, faLinkedin, faTwitter, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 export default function Contact() {
     const [values, setValues] = useState({ name: "", email: "", message: "" });
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [formMessage, setFormMessage] = useState(null); // { type: 'success' | 'error', text: string }
+    const [formMessage, setFormMessage] = useState(null);
+    const [contact, setContact] = useState(null);
+
+    // ✅ Fetch contact info from settings
+    useEffect(() => {
+        const loadSettings = async () => {
+            try {
+                const res = await getSettingsApi();
+                if (!res.error && res.data?.contact) {
+                    setContact(res.data.contact);
+                }
+            } catch (err) {
+                console.error("Failed to load contact info:", err);
+            }
+        };
+        loadSettings();
+    }, []);
 
     const validate = (vals) => {
         const errs = {};
@@ -30,13 +50,11 @@ export default function Contact() {
     const handleBlur = (e) => {
         const { name } = e.target;
         setTouched((prev) => ({ ...prev, [name]: true }));
-        const validationErrors = validate(values);
-        setErrors(validationErrors);
+        setErrors(validate(values));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const validationErrors = validate(values);
         setErrors(validationErrors);
         setTouched({ name: true, email: true, message: true });
@@ -44,17 +62,23 @@ export default function Contact() {
         if (Object.keys(validationErrors).length > 0) return;
 
         setIsSubmitting(true);
-        setFormMessage(null); // clear previous message
+        setFormMessage(null);
 
         try {
-            const res = await createBookingApi(values);
+            await createBookingApi(values);
             setValues({ name: "", email: "", message: "" });
             setTouched({});
             setErrors({});
-            setFormMessage({ type: "success", text: "Message sent successfully! We will contact you soon." });
+            setFormMessage({
+                type: "success",
+                text: "Message sent successfully! We will contact you soon.",
+            });
         } catch (error) {
             console.error("Submission failed:", error);
-            setFormMessage({ type: "error", text: "Something went wrong. Please try again later." });
+            setFormMessage({
+                type: "error",
+                text: "Something went wrong. Please try again later.",
+            });
         } finally {
             setIsSubmitting(false);
         }
@@ -130,7 +154,7 @@ export default function Contact() {
                             {isSubmitting ? "Sending..." : "Send Message"}
                         </button>
 
-                        {/* Success or Error Message */}
+                        {/* Success/Error Message */}
                         {formMessage && (
                             <div
                                 className={`mt-4 text-sm font-medium px-4 py-3 rounded-md ${
@@ -142,28 +166,80 @@ export default function Contact() {
                         )}
                     </form>
 
-                    {/* Contact Info */}
-                    <div className="flex-1 bg-gray-50 rounded-2xl shadow-md border border-gray-200 p-8 space-y-6">
-                        <h3 className="text-2xl font-bold mb-4 text-gray-700">Contact Information</h3>
+                    {/* Contact Info (Dynamic + Font Awesome) */}
+                    <div className="flex-1 bg-gray-50 rounded-2xl shadow-md border border-gray-200 p-8 space-y-5">
+                        <h3 className="text-2xl font-bold mb-8 text-gray-700">Contact Information</h3>
 
-                        <div className="flex items-center space-x-4">
-                            <span className="text-indigo-600 text-xl">📞</span>
-                            <span className="text-lg text-gray-700">+880 1234 567890</span>
-                        </div>
+                        {contact && (
+                            <>
+                                {contact.phone1 && (
+                                    <div className="flex items-center space-x-4">
+                                        <FontAwesomeIcon icon={faPhone} className="text-indigo-600 text-xl" />
+                                        <span className="text-lg text-gray-700">{contact.phone1}</span>
+                                    </div>
+                                )}
+                                {contact.phone2 && (
+                                    <div className="flex items-center space-x-4">
+                                        <FontAwesomeIcon icon={faPhone} className="text-indigo-500 text-xl" />
+                                        <span className="text-lg text-gray-700">{contact.phone2}</span>
+                                    </div>
+                                )}
+                                {contact.gmail && (
+                                    <div className="flex items-center space-x-4">
+                                        <FontAwesomeIcon icon={faEnvelope} className="text-red-500 text-xl" />
+                                        <span className="text-lg text-gray-700">{contact.gmail}</span>
+                                    </div>
+                                )}
+                                {contact.whatsapp && (
+                                    <div className="flex items-center space-x-4">
+                                        <FontAwesomeIcon icon={faWhatsapp} className="text-green-500 text-xl" />
+                                        <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" className="text-lg text-gray-700">
+                                            {contact.whatsapp}
+                                        </a>
+                                    </div>
+                                )}
+                                {contact.address && (
+                                    <div className="flex items-start space-x-4">
+                                        <FontAwesomeIcon icon={faMapMarkerAlt} className="text-orange-500 text-xl mt-1" />
+                                        <address className="not-italic text-lg leading-snug text-gray-700">{contact.address}</address>
+                                    </div>
+                                )}
 
-                        <div className="flex items-center space-x-4">
-                            <span className="text-indigo-600 text-xl">📧</span>
-                            <span className="text-lg text-gray-700">info@yourinterior.com</span>
-                        </div>
-
-                        <div className="flex items-start space-x-4">
-                            <span className="text-indigo-600 text-xl">📍</span>
-                            <address className="not-italic text-lg leading-snug text-gray-700">
-                                123 Interior St,
-                                <br />
-                                Dhaka, Bangladesh
-                            </address>
-                        </div>
+                                {/* Social Links */}
+                                <div className="flex flex-wrap gap-6 pt-4">
+                                    {contact.facebook && (
+                                        <a href={contact.facebook} target="_blank" className="text-blue-600 text-lg flex items-center gap-2">
+                                            <FontAwesomeIcon icon={faFacebook} />
+                                            Facebook
+                                        </a>
+                                    )}
+                                    {contact.linkedin && (
+                                        <a href={contact.linkedin} target="_blank" className="text-blue-700 text-lg flex items-center gap-2">
+                                            <FontAwesomeIcon icon={faLinkedin} />
+                                            LinkedIn
+                                        </a>
+                                    )}
+                                    {contact.twitter && (
+                                        <a href={contact.twitter} target="_blank" className="text-sky-500 text-lg flex items-center gap-2">
+                                            <FontAwesomeIcon icon={faTwitter} />
+                                            Twitter
+                                        </a>
+                                    )}
+                                    {contact.instagram && (
+                                        <a href={contact.instagram} target="_blank" className="text-pink-500 text-lg flex items-center gap-2">
+                                            <FontAwesomeIcon icon={faInstagram} />
+                                            Instagram
+                                        </a>
+                                    )}
+                                    {contact.youtube && (
+                                        <a href={contact.youtube} target="_blank" className="text-red-600 text-lg flex items-center gap-2">
+                                            <FontAwesomeIcon icon={faYoutube} />
+                                            YouTube
+                                        </a>
+                                    )}
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

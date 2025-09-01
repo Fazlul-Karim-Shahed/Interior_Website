@@ -1,11 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { createBookingApi } from "@/src/api/BookingApi";
+import { getSettingsApi } from "@/src/api/settingsApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp, faFacebook, faLinkedin, faTwitter, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 export default function Contact() {
     const [formMessage, setFormMessage] = useState(null); // { type: 'success' | 'error', text: string }
+    const [contactInfo, setContactInfo] = useState(null);
+
+    // ✅ Fetch settings contact info
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const res = await getSettingsApi();
+                if (!res.error && res.data?.contact) {
+                    setContactInfo(res.data.contact);
+                }
+            } catch (err) {
+                console.error("Failed to load contact info:", err);
+            }
+        };
+        loadData();
+    }, []);
 
     const formik = useFormik({
         initialValues: { name: "", email: "", message: "" },
@@ -23,12 +43,18 @@ export default function Contact() {
         onSubmit: async (values, { resetForm, setSubmitting }) => {
             setFormMessage(null);
             try {
-                const res = await createBookingApi(values);
-                setFormMessage({ type: "success", text: "Message sent successfully! We’ll be in touch soon." });
+                await createBookingApi(values);
+                setFormMessage({
+                    type: "success",
+                    text: "Message sent successfully! We’ll be in touch soon.",
+                });
                 resetForm();
             } catch (err) {
                 console.error("Submission failed:", err);
-                setFormMessage({ type: "error", text: "Something went wrong. Please try again later." });
+                setFormMessage({
+                    type: "error",
+                    text: "Something went wrong. Please try again later.",
+                });
             } finally {
                 setSubmitting(false);
             }
@@ -119,34 +145,75 @@ export default function Contact() {
                     </form>
 
                     {/* Direct Contact Info */}
-                    <div className="flex-1 text-brand-100 space-y-6">
-                        <h3 className="text-2xl font-semibold mb-4">Contact Information</h3>
+                    <div className="flex-1 text-brand-100 space-y-5">
+                        <h3 className="text-2xl font-semibold mb-8">Contact Information</h3>
 
-                        <div className="flex items-center space-x-4">
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path d="M3 10h2l3 7 4-14 3 7h4"></path>
-                            </svg>
-                            <span className="text-lg">+880 1234 567890</span>
-                        </div>
+                        {contactInfo?.phone1 && (
+                            <div className="flex items-center space-x-4">
+                                <FontAwesomeIcon icon={faPhone} className="text-white text-xl" />
+                                <span className="text-lg">{contactInfo.phone1}</span>
+                            </div>
+                        )}
 
-                        <div className="flex items-center space-x-4">
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"></path>
-                                <path d="M12 14v7"></path>
-                                <path d="M18 20h-12"></path>
-                            </svg>
-                            <span className="text-lg">info@yourinterior.com</span>
-                        </div>
+                        {contactInfo?.phone2 && (
+                            <div className="flex items-center space-x-4">
+                                <FontAwesomeIcon icon={faPhone} className="text-white text-xl" />
+                                <span className="text-lg">{contactInfo.phone2}</span>
+                            </div>
+                        )}
+                        {contactInfo?.gmail && (
+                            <div className="flex items-center space-x-4">
+                                <FontAwesomeIcon icon={faEnvelope} className="text-white text-xl" />
+                                <span className="text-lg">{contactInfo.gmail}</span>
+                            </div>
+                        )}
+                        {contactInfo?.address && (
+                            <div className="flex items-center space-x-4">
+                                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-white text-xl" />
+                                <address className="not-italic text-lg">{contactInfo.address}</address>
+                            </div>
+                        )}
+                        {contactInfo?.whatsapp && (
+                            <div className="flex items-center space-x-4">
+                                <FontAwesomeIcon icon={faWhatsapp} className="text-white text-xl" />
+                                <a href={`https://wa.me/${contactInfo.whatsapp}`} target="_blank" className="text-lg">
+                                    {contactInfo.whatsapp}
+                                </a>
+                            </div>
+                        )}
 
-                        <div className="flex items-center space-x-4">
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path d="M3 5h18M9 3v2M15 3v2M4 7h16v14H4z"></path>
-                            </svg>
-                            <address className="not-italic text-lg">
-                                123 Interior St,
-                                <br />
-                                Dhaka, Bangladesh
-                            </address>
+                        {/* Social Links */}
+                        <div className="flex flex-wrap gap-4 pt-4">
+                            {contactInfo?.facebook && (
+                                <a href={contactInfo.facebook} target="_blank" className="text-white text-lg flex items-center gap-2">
+                                    <FontAwesomeIcon icon={faFacebook} />
+                                    Facebook
+                                </a>
+                            )}
+                            {contactInfo?.linkedin && (
+                                <a href={contactInfo.linkedin} target="_blank" className="text-white text-lg flex items-center gap-2">
+                                    <FontAwesomeIcon icon={faLinkedin} />
+                                    LinkedIn
+                                </a>
+                            )}
+                            {contactInfo?.twitter && (
+                                <a href={contactInfo.twitter} target="_blank" className="text-white text-lg flex items-center gap-2">
+                                    <FontAwesomeIcon icon={faTwitter} />
+                                    Twitter
+                                </a>
+                            )}
+                            {contactInfo?.instagram && (
+                                <a href={contactInfo.instagram} target="_blank" className="text-white text-lg flex items-center gap-2">
+                                    <FontAwesomeIcon icon={faInstagram} />
+                                    Instagram
+                                </a>
+                            )}
+                            {contactInfo?.youtube && (
+                                <a href={contactInfo.youtube} target="_blank" className="text-white text-lg flex items-center gap-2">
+                                    <FontAwesomeIcon icon={faYoutube} />
+                                    YouTube
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>

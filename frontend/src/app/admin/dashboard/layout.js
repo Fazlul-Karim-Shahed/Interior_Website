@@ -60,6 +60,7 @@ const navGroups = [
             { label: "Service", href: "/admin/dashboard/customize/service" },
             { label: "Project", href: "/admin/dashboard/customize/project" },
             { label: "Video", href: "/admin/dashboard/customize/video" },
+            { label: "Contact", href: "/admin/dashboard/customize/contact" },
             { label: "Visibility", href: "/admin/dashboard/customize/visibility" },
         ],
     },
