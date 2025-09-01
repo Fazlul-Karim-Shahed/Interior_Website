@@ -20,9 +20,6 @@ export default function Services({ services }) {
                         </div>
                         <div className="p-2 text-center">
                             <h3 className="text-sm md:text-lg font-semibold text-brand-dark-navy-600 my-3">{item.name}</h3>
-                            {/* <div className="text-xs md:text-sm text-brand-dark-navy-900 hidden md:block line-clamp-2">
-                                <div dangerouslySetInnerHTML={{ __html: item.description }} />
-                            </div> */}
                         </div>
                     </Link>
                 ))}

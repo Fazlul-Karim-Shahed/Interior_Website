@@ -159,7 +159,7 @@ export default function Client() {
             >
                 {duplicatedClients.map(({ name, image }, idx) => (
                     <div key={idx} className="flex-shrink-0 w-40 md:w-52 lg:w-64 flex flex-col items-center cursor-default">
-                        <img src={image.url} alt={name} className="w-32 md:w-40 h-32 md:h-40 rounded-full border-4 border-brand-400 shadow-md mb-3" draggable={false} />
+                        <img src={image.url} alt={name} className="w-32 md:w-40 h-32 md:h-40 rounded-full border border-brand-400 shadow-md mb-3" draggable={false} />
                         <p className="text-brand-800 text-sm font-medium text-center">{name}</p>
                     </div>
                 ))}

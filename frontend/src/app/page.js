@@ -10,6 +10,7 @@ import ProjectVideoSection from "../components/client/LandingPage/ProjectVideoSe
 import Services from "../components/client/LandingPage/Services";
 import WhyChooseUs from "../components/client/LandingPage/WhyChooseUs";
 import WorkingProcess from "../components/client/LandingPage/WorkingProcess";
+import WhatsApp from "../components/client/Whatsapp/page";
 
 export const metadata = {
     title: "Misoran Interior BD",
@@ -42,6 +43,8 @@ export default async function Home() {
             {settings?.clientVisibility && <Client />}
 
             {settings?.contactVisibility && <Contact />}
+
+            {settings?.contactVisibility && <WhatsApp contact={settings.contact} />}
         </main>
     );
 }
