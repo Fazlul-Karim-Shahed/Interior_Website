@@ -2,40 +2,58 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import banner1 from "@/public/banner.jpg";
-import banner2 from "@/public/22.jpg";
 import GlowBtn from "../../Common/GlowBtn";
 import Link from "next/link";
-
-const slides = [
-    { src: banner1, alt: "Interior 1" },
-    { src: banner2, alt: "Interior 2" },
-];
+import { getSettingsApi } from "@/src/api/settingsApi";
 
 export default function HeroSection() {
+    const [slides, setSlides] = useState([]);
     const [current, setCurrent] = useState(0);
 
+    // Fetch server images
+    useEffect(() => {
+        const loadBanners = async () => {
+            try {
+                const res = await getSettingsApi();
+                if (!res.error && res.data?.sliderImages?.length > 0) {
+                    const serverSlides = res.data.sliderImages.map((item, index) => ({
+                        src: item.url,
+                        alt: item.alt || `Interior ${index + 1}`,
+                    }));
+                    setSlides(serverSlides);
+                } else {
+                    // Fallback images if server has none
+                    setSlides([
+                        { src: "/banner.jpg", alt: "Interior 1" },
+                        { src: "/22.jpg", alt: "Interior 2" },
+                    ]);
+                }
+            } catch (err) {
+                console.error("Failed to load banners, using defaults:", err);
+                setSlides([
+                    { src: "/banner.jpg", alt: "Interior 1" },
+                    { src: "/22.jpg", alt: "Interior 2" },
+                ]);
+            }
+        };
+        loadBanners();
+    }, []);
+
+    // Auto-slide
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrent((prev) => (prev + 1) % slides.length);
         }, 5000);
         return () => clearInterval(timer);
-    }, []);
+    }, [slides.length]);
 
     return (
         <section className="relative h-[78vh] md:h-[87vh] w-full overflow-hidden bg-black text-white">
             {/* Slider track */}
             <div className="flex h-full transition-transform duration-1000 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
                 {slides.map((slide, index) => (
-                    <div key={index} className="relative min-w-full h-full">
-                        <Image
-                            src={slide.src}
-                            alt={slide.alt}
-                            fill
-                            priority
-                            sizes="100vw"
-                            className={`object-cover object-center w-full h-full transition-transform duration-[5000ms] ${current === index ? "scale-105" : "scale-100"}`}
-                        />
+                    <div key={index} className="relative w-full h-full flex-shrink-0">
+                        <Image src={slide.src} alt={slide.alt} fill style={{ objectFit: "cover" }} priority sizes="100vw" quality={100} unoptimized={true} />
                     </div>
                 ))}
             </div>
